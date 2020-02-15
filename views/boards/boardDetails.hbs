@@ -11,7 +11,7 @@
   {{#if noMessages}}
   <h3>There are currently no messages to display</h3>
   {{else}}
-  {{#each board.messages}}
+  {{#each messages}}
   <div class="messages__message-div">
     <h4><a href="/users/profile/{{this.author._id}}">{{this.author.username}}</a></h4>
     <div>
