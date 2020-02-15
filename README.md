@@ -16,3 +16,6 @@ steps:
 7. conflicts resolved or no conflicts found - git push origin <your-branch-name>
 8. create pull request from your branch to the master branch
 9. If no more conflicts found then merge your pull request
+
+
+lets see...
