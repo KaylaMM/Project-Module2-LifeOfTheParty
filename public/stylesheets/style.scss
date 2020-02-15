@@ -1,0 +1,135 @@
+// body {
+//     padding: 50px;
+//     font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+// }
+
+// a {
+//     color: #00b7ff;
+// }
+
+// when you first use irongenerate, make sure that you remove any styling that is in your css file so that it does not effect the styling that you are trying to achieve.
+
+@mixin center-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+@mixin single-line-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: row;
+}
+
+@function calcRemVar($size) {
+    $remSize: $size / 16px;
+    @return $remSize * 1rem;
+}
+
+body {
+    margin: 0;
+    padding: 5vw 5vw 0;
+    height: 87.2vh;
+    background-color: burlywood;
+
+    nav {
+        display: flex;
+        justify-content: space-between;
+        padding: 0 5vw;
+        align-items: center;
+        height: 5vw;
+        background-color: lightslategrey;
+        position: fixed;
+        top: 0;
+        width: 90vw;
+        margin: 0 -5vw;
+
+        div {
+            width: fit-content;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            a {
+                margin: calcRemVar(4.8px);
+                text-decoration: none;
+            }
+        }
+
+        img {
+            height: calcRemVar(56px);
+            width: calcRemVar(60.8px);
+            margin: 0 calcRemVar(8px);
+        }
+    }
+
+    form {
+        display: flex;
+        align-items: center;
+
+        &.auth-form {
+            display: table-caption;
+            width: calcRemVar(192px);
+        }
+    }
+
+    .board {
+        &__board-names {
+            display: flex;
+            align-items: center;
+
+            a {
+                margin-right: calcRemVar(4.8px);
+            }
+        }
+    }
+
+    .messages {
+        &__hr {
+            border: 0.4px solid mediumaquamarine;
+        }
+
+        &__message-div {
+            border: 1px solid black;
+            border-bottom: 2px solid black;
+            padding-bottom: calcRemVar(8px);
+            margin-bottom: calcRemVar(3.2px);
+        }
+    }
+
+    .user {
+        &__profile {
+            @include center-content;
+
+            img {
+                width: calcRemVar(240px);
+            }
+
+            div {
+                @include center-content;
+            }
+
+            form {
+                @include center-content;
+
+                input {
+                    width: calcRemVar(176px);
+                }
+
+                .profile {
+                    &__name-input {
+                        @include single-line-content;
+                        width: calcRemVar(368px);
+                    }
+                }
+
+                div.input-fields {
+                    @include single-line-content;
+                    width: calcRemVar(544px);
+                }
+            }
+        }
+    }
+}
