@@ -13,7 +13,7 @@
          <li>git add . (to add the changes made on conflicts)</li>
          <li>git commit -m "message of what changed and that conflicts have been corrected"</li>
          <li>git pull origin master (pull again to make sure no changes while working on conflicts)</li>
-      <ol>
+      </ol>
    </li>
    <li>conflicts resolved or no conflicts found - git push origin <your-branch-name></li>
    <li>create pull request from your branch to the master branch</li>
