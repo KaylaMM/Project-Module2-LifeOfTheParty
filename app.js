@@ -10,12 +10,13 @@ const logger = require("morgan");
 const path = require("path");
 const axios = require("axios");
 
+
 const session = require("express-session");
 const MongoStore = require("connect-mongo")(session);
 const flash = require("connect-flash");
 
 mongoose
-    .connect("mongodb://localhost/messageboardexample", {
+    .connect("mongodb://localhost/life-of-the-party", {
         useCreateIndex: true,
         useNewUrlParser: true,
         useUnifiedTopology: true,
@@ -40,7 +41,9 @@ const app = express();
 // Middleware Setup
 app.use(logger("dev"));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({
+    extended: false
+}));
 app.use(cookieParser());
 
 // Express View engine setup
@@ -78,7 +81,9 @@ app.use(
         secret: "regenerator",
         resave: true,
         saveUninitialized: true,
-        store: new MongoStore({ mongooseConnection: mongoose.connection })
+        store: new MongoStore({
+            mongooseConnection: mongoose.connection
+        })
     })
 );
 app.use(flash());

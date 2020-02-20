@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 const { Schema, model } = mongoose;
 
 // in order to use .populate in the route file, you must first have the type for what you will populate as Schema.Types.ObjectId and make sure to ref (reference) the model that it will be searching that ID for in your db collection
+<<<<<<< HEAD
 // author: {type: Schema.Types.ObjectId, ref: 'User'}
 // if your using an array of object ids then it would look like the code below
 // messages: {type: [{type: Schema.Types.ObjectId, ref: 'Message'}]}
@@ -43,10 +44,47 @@ const userSchema = new Schema(
             type: String
         },
         // the boards that have been created by the user
+=======
+
+const userSchema = new Schema(
+    {
+        // Username provided by users during signup
+        username: {
+            type: String,
+            required: [true, 'Username is required.'],
+            unique: true,
+            trim: true
+        },
+        // Password provided by users during signup
+        password: {
+            type: String,
+            required: [true, 'Password is required.'],
+            trim: true
+        },
+        // Email provided by users during signup
+        email: {
+            type: String,
+            required: [true, 'Email is required.'],
+            match: [
+                    /^\S+@\S+\.\S+$/, 
+                    'Please use a valid email address.'],
+            unique: true,
+            lowercase: true,
+            trim: true
+        },
+        // User avatar provided by users during signup
+        avatar: {
+            type: String,
+            default:
+                "https://cl.goliath.com/image/upload/t_tn,f_auto,q_auto,$h_480,$w_895/go/2020/01/baby-yoda-life-size-figure-584x600-895x480.jpg"
+        },
+        // Boards created by user
+>>>>>>> b2a1656e17d1ab6e31d128def413db8be08fa538
         userBoards: {
             type: [
                 {
                     type: Schema.Types.ObjectId,
+<<<<<<< HEAD
                     ref: "Board"
                 }
             ]
@@ -87,15 +125,49 @@ const userSchema = new Schema(
         // for now we will not add this to our example app. But if you fork and clone this app maybe you can create a route to do so as practice
         // for now we will not add this to our example app. But if you fork and clone this app maybe you can create the needed code for practice
         followingUser: {
+=======
+                    ref: "Boards"
+                }
+            ]
+        },
+        // Private messages received by the user
+        DMs: {
+            type: [
+                {
+                    type: Schema.Types.ObjectId,
+                    ref: "Message"
+                }
+            ]
+        },
+        // Users follow by current user
+        UsersFollowers: {
             type: [
                 {
                     type: Schema.Types.ObjectId,
                     ref: "User"
                 }
             ]
+        },
+        // Users followed by current user
+        UsersFollowed: {
+>>>>>>> b2a1656e17d1ab6e31d128def413db8be08fa538
+            type: [
+                {
+                    type: Schema.Types.ObjectId,
+                    ref: "User"
+                }
+            ]
+<<<<<<< HEAD
         }
     },
     { timestamps: true }
+=======
+        },
+    },
+    {
+        timestamps: true
+    }
+>>>>>>> b2a1656e17d1ab6e31d128def413db8be08fa538
 );
 
 const User = model("User", userSchema);

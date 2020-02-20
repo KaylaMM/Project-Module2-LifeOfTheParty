@@ -3,6 +3,7 @@ const router = express.Router();
 const User = require("../../models/User");
 const cloudUpload = require("../../config/cloudinary-setup");
 
+<<<<<<< HEAD
 // Here will create a route to lead to the users profile page in order to allow the user to modify and update their information.
 // Since we have currentUser set up as a local variable in the app.js, we will not have to get the users details from the DB prior to loading the details page.
 // this route will allow the current user to view their profile and also be able to edit their profile.
@@ -11,6 +12,12 @@ router.get("/profile", (req, res, next) => {
 });
 
 // this route will be so that we can update the users profile information if they edit any of the fields. Since each sessions user is unique then we can create a route without having to pass the users id in the endpoint.
+=======
+router.get("/profile", (req, res, next) => {
+    res.render("users/userProfile", currentUser);
+}); 
+
+>>>>>>> b2a1656e17d1ab6e31d128def413db8be08fa538
 router.post("/profile/update", (req, res, next) => {
     // since this route has a similar endpoint as the profile route when seeing another users profile, we have to add this route first so that when your app checks the routes in this file (starts at top and works its way down), then it will find this route first and not confuse the /update as being a /:userId since the id can be anything.
     User.findByIdAndUpdate(req.session.user._id, req.body, { new: true })
