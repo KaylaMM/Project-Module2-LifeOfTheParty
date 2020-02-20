@@ -3,11 +3,8 @@ const router = express.Router();
 const Board = require("../../models/Board.js");
 const User = require("../../models/User");
 
-<<<<<<< HEAD
+
 // Display Profile
-=======
-// Display message board
->>>>>>> b2a1656e17d1ab6e31d128def413db8be08fa538
 router.get("/", (req, res, next) => {
   Board.find()
     .then(allBoards => {
@@ -33,7 +30,6 @@ router.get("/", (req, res, next) => {
     .catch(err => next(err));
 });
 
-<<<<<<< HEAD
 // NOT SURE IF THIS IS
 // this route we will use to refresh the messages on the board details page so that we do not have to refresh the page over and over on new input. Thus allowing users to see newly added messages without them having to reload the page.
 // we will be calling this route from our script file and will place it before the initial details route so that we can catch the /refresh at the end of the endpoint
@@ -51,24 +47,6 @@ router.get("/", (req, res, next) => {
 //     })
 //     .catch(err => next(err));
 // });
-=======
-// this route we will use to refresh the messages on the board details page so that we do not have to refresh the page over and over on new input. Thus allowing users to see newly added messages without them having to reload the page.
-// we will be calling this route from our script file and will place it before the initial details route so that we can catch the /refresh at the end of the endpoint
-// we are also using the same endpoint because it will require less coding to grab the url in our script file and thus we will not have to modify the url much.
-router.get("/details/:boardId/refresh", (req, res, next) => {
-  Board.findById(req.params.boardId)
-    .populate({
-      path: "messages",
-      populate: [{ path: "replies" }, { path: "author" }]
-    })
-    .populate("followers")
-    .then(boardFromDB => {
-      // in order to get the information from this route via an axios call, we will have to use a json response. We use render to display a view page and redirect to reroute to another route within the apps get routes.
-      res.status(200).json(boardFromDB);
-    })
-    .catch(err => next(err));
-});
->>>>>>> b2a1656e17d1ab6e31d128def413db8be08fa538
 
 // display the specific board page
 router.get("/details/:boardId", (req, res, next) => {
@@ -202,7 +180,6 @@ router.post("/followers/:boardId", (req, res, next) => {
 //     .catch(err => next(err));
 // });
 
-=======
 router.get("/add-message/:boardId/:messageId", (req, res, next) => {
   // when updating we must add {new: true} in order to get the updated information from the db, otherwise you will get the information that is on the db prior to the update
   Board.findByIdAndUpdate(
@@ -218,6 +195,5 @@ router.get("/add-message/:boardId/:messageId", (req, res, next) => {
     })
     .catch(err => next(err));
 });
->>>>>>> b2a1656e17d1ab6e31d128def413db8be08fa538
 
 module.exports = router;
