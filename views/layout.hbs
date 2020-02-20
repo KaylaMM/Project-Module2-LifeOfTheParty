@@ -8,9 +8,13 @@
   <title>{{title}}</title>
   <link rel="stylesheet" href="/stylesheets/style.css" />
 </head>
-
 <body class="{{bodyClass}}">
   <nav>
+    {{!-- here we separate the links into divs in order to use flexbox to space the links out to each end of the screen. (auth links to the far right and other links for the app in the far left) --}}
+    {{!-- <div> --}}
+      {{!-- <a href="/">Sign In</a> --}}
+      {{!-- <a href="/boards">My LOP Board</a> --}}
+    {{!-- </div> --}}
     <div>
       <a href="/">Home</a>
       <a href="/boards">Boards</a>
@@ -18,11 +22,7 @@
     <div>
       {{#if currentUser}}
       <span>Hi, {{ currentUser.username }}</span>
-<<<<<<< HEAD
       <a href="/users/profile"><img src={{currentUser.avatar}} alt="avatar"></a>
-=======
-      <a href="/profile"><img src={{currentUser.avatar}} alt="avatar"></a>
->>>>>>> b2a1656e17d1ab6e31d128def413db8be08fa538
       <a href="/auth/logout">Logout</a>
       {{else}}
       <a href="/auth/login">Login</a>
