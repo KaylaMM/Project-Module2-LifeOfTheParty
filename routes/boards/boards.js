@@ -163,7 +163,6 @@ router.post("/followers/:boardId", (req, res, next) => {
 });
 
 // this route is another update route that we will use in order to add messages to the board
-<<<<<<< HEAD
 // router.get("/add-message/:boardId/:messageId", (req, res, next) => {
 //   // when updating we must add {new: true} in order to get the updated information from the db, otherwise you will get the information that is on the db prior to the update
 //   Board.findByIdAndUpdate(
