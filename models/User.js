@@ -10,13 +10,13 @@ const { Schema, model } = mongoose;
 const userSchema = new Schema(
     {
         // users first name
-        firstName: {
-            type: String
-        },
+        // firstName: {
+        //     type: String
+        // },
         // users last name
-        lastName: {
-            type: String
-        },
+        // lastName: {
+        //     type: String
+        // },
         // username for the user which will be unique (this cannot be edited so in order to avoid heckling and have user accountable for improper behavior, replies or content posted)
         // when using passport it would be best to check for duplicates of this field by searching the db first in your route. If this has a unique tag in the model then passport will set this collection(users) to have the username field unique and would then give you issues when trying to create more than one user as it will view username unique as if there should only be 1 username in the collection.
         username: {
