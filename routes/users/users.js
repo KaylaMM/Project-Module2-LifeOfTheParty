@@ -3,20 +3,6 @@ const router = express.Router();
 const User = require("../../models/User");
 const cloudUpload = require("../../config/cloudinary-setup");
 
-// Route to userProfile
-router.get("/profile", (req, res, next) => {
-    User.findById(req.session.user._id)
-    .then(userFromDB => {
-        // we have to remember to set the user information after its been updated to req.session.user or the currentUser local variable we set up in app.js will have the old user info and wont display the changes
-        req.session.user = userFromDB;
-        console.log(userFromDB);
-        res.render("users/userProfile", { userFromDB });
-    })
-    .catch(err => next(err));
-});
-
-
-
 // this route will be so that we can update the users profile information if they edit any of the fields. Since each sessions user is unique then we can create a route without having to pass the users id in the endpoint.
 // router.post("/profile/update", (req, res, next) => {
 //     // since this route has a similar endpoint as the profile route when seeing another users profile, we have to add this route first so that when your app checks the routes in this file (starts at top and works its way down), then it will find this route first and not confuse the /update as being a /:userId since the id can be anything.
@@ -79,5 +65,46 @@ router.get("/profile", (req, res, next) => {
 //         })
 //         .catch(err => next(err));
 // });
+
+// Route to userProfile
+router.get("/profile", (req, res, next) => {
+    res.render("users/userProfile");
+});
+
+router.post("/profile/update", (req, res, next) => {
+    User.findByIdAndUpdate(req.session.user._id, req.body, { new: true })
+        .then(updatedUser => {
+            req.session.user = updatedUser;
+            res.locals.currentUser = req.session.user;
+            res.redirect("back");
+        })
+        .catch(err => next(err));
+});
+
+router.post(
+    "/profile/file-upload",
+    cloudUpload.single("uploadedImage"),
+    (req, res, next) => {
+        User.findByIdAndUpdate(
+            req.session.user._id,
+            { avatar: req.file.url },
+            { new: true }
+        )
+            .then(updatedUser => {
+                req.session.user = updatedUser;
+                res.locals.currentUser = req.session.user;
+                res.redirect("back");
+            })
+            .catch(err => next(err));
+    }
+);
+
+router.get("/profile/:userId", (req, res, next) => {
+    User.findById(req.params.userId)
+        .then(userFromDB => {
+            res.render("users/userProfile", { userFromDB });
+        })
+        .catch(err => next(err));
+});
 
 module.exports = router;
