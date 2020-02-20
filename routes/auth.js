@@ -54,7 +54,6 @@ router.get("/signup", (req, res, next) => {
 router.post("/signup", uploadCloud.single('avatar'), (req, res, next) => {
     console.log('file: ', req.file)
     const { username, email, password } = req.body;
-
     if (username === "" || email === "" || password === "") {
         res.render("auth/signup", {
             message: "Missing required information"
@@ -62,7 +61,6 @@ router.post("/signup", uploadCloud.single('avatar'), (req, res, next) => {
         return;
     }
 
-    // check if the username is already registered in the database and if so return the message
     User.findOne({ username }, "username", (err, user) => {
         if (user !== null) {
             res.render("auth/signup", {
