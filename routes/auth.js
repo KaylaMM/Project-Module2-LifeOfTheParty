@@ -27,7 +27,11 @@ router.post("/login", (req, res, next) => {
     User.findOne({ username: req.body.username })
         .then(userFromDB => {
             // If a user is not returned from a DB, send back message that no such user exists in DB
+
             if (userFromDB === null) {
+
+            console.log(userFromDB);
+
                 res.render("auth/login", {
                     message: "That username was not found in the system"
                 });
@@ -37,8 +41,9 @@ router.post("/login", (req, res, next) => {
             // Compare users encrypted password with an encryption from DB and redirect to home page if they match otherwise redirect to login
             if (bcrypt.compareSync(req.body.password, userFromDB.password)) {
                 req.session.user = userFromDB;
-                 res.redirect("/users/profile");
 
+                res.locals.currentUser = req.session.user;
+                res.render("index");
             } else {
                 res.render("auth/login", { message: "Incorrect Password" });
                 return;

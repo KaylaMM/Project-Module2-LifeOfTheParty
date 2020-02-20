@@ -10,7 +10,11 @@
     "dependencies": {
         "axios": "^0.19.2",
         "bcrypt": "^3.0.0",
+<<<<<<< HEAD
         "body-parser": "^1.18.3",
+=======
+        "body-parser": "^1.19.0",
+>>>>>>> b2a1656e17d1ab6e31d128def413db8be08fa538
         "cloudinary": "^1.19.0",
         "connect-ensure-login": "^0.1.1",
         "connect-flash": "^0.1.1",
