@@ -5,15 +5,13 @@ const { Schema, model } = mongoose;
 const jokesSchema = new Schema(
   {
     // The joke type
-    type: {
+    joke: {
         type: String,
         trim: true,
-        
-
     }
   },
   { timestamps: true }
 );
 
-const Board = model("Board", boardSchema);
-module.exports = Board;
+const Jokes = model("Jokes", jokesSchema);
+module.exports = Jokes;
