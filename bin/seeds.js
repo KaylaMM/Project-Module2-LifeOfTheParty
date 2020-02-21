@@ -10,11 +10,7 @@ const User = require("../models/User");
 const bcryptSalt = 10;
 
 mongoose
-<<<<<<< HEAD
-    .connect("mongodb://localhost/messageboardexample", {
-=======
     .connect("mongodb://localhost/life-of-the-party", {
->>>>>>> b2a1656e17d1ab6e31d128def413db8be08fa538
         useCreateIndex: true,
         useNewUrlParser: true,
         useUnifiedTopology: true,

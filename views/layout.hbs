@@ -25,11 +25,7 @@
       {{!-- if currentUser exists (a person has logged in), then I just want to show the logout link. Else I will display the login and signup links --}}
       {{#if currentUser}}
       <span>Hi, {{ currentUser.username }}</span>
-<<<<<<< HEAD
       <a href="/users/profile"><img src={{currentUser.avatar}} alt="avatar"></a>
-=======
-      <a href="/profile"><img src={{currentUser.avatar}} alt="avatar"></a>
->>>>>>> b2a1656e17d1ab6e31d128def413db8be08fa538
       <a href="/auth/logout">Logout</a>
       {{else}}
       <a href="/auth/login">Login</a>
@@ -44,7 +40,7 @@
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   {{!-- always put your js file at the very bottom of all your scripts in order to make sure that your code will override any that came prior to it --}}
   {{!-- its a good idea to put your script tags at the bottom of your body so that after the content of the page loads your scripts can run. This is especially important when using DOM Manipulation as it assures that you will be able to find the html elements that you are targeting since they would have loaded on the page prior to your script checking to see if they exists --}}
-  <script src="/javascripts/script.js"></script>
+ <script src="/"></script>
 </body>
 
 </html>
