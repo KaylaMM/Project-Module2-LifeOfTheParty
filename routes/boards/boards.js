@@ -25,10 +25,20 @@ router.get("/", (req, res, next) => {
         // now we will be able to display one message if there are no boards (something like "There are no boards to display at this time. Be the first to create a new board!") or show the boards that exists if there are some
         noBoards: boardsArray.length === 0
       };
-      res.render("boards/messageBoards", data);
+      res.render("users/userProfile", data);
     })
     .catch(err => next(err));
 });
+
+//NOT SURE IF ROUTE NEEDS TO BE MADE FOR TITLE
+// router.get("/users/:messageId", (req, res, next) => {
+//   Message.findById(req.params.messageId)
+//       .populate({ path: "replies", populate: { path: "author" } })
+//       .then(messageFromDB => {
+//           res.render("messages/messageDetails", { messageFromDB });
+//       })
+//       .catch(err => next(err));
+// });
 
 // NOT SURE IF THIS IS
 // this route we will use to refresh the messages on the board details page so that we do not have to refresh the page over and over on new input. Thus allowing users to see newly added messages without them having to reload the page.

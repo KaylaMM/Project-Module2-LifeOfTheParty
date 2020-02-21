@@ -49,5 +49,6 @@ const boardSchema = new Schema(
   { timestamps: true }
 );
 
+
 const Board = model("Board", boardSchema);
 module.exports = Board;

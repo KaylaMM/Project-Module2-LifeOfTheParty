@@ -5,32 +5,42 @@
   {{!-- add/delete to board and store jokes --}}
   {{!-- Jokes model, route, and views needed --}}
 
+  {{!-- More pinterest style, all images --}}
+
+
+{{!-- onclick to save data to subsitute input field to title using DOM Manipulation --}}
+
+
+ <article>
+   <img src="{{currentUser.avatar}}" alt="" height="200" width="200"> 
+ </article>
+
 <div class="user_profile">
 <p>This is My Board</p>
 
 <input type="text" placeholder="Enter Title Here...">
 <ul>
-  <li>Joke Here</li>
-  <li>Joke Here</li>
-  <li>Joke Here</li>
+  <li>{{joke}}</li>
+  <li>{{joke}}</li>
+  <li>{{joke}}</li>
 </ul>
 
 <br>
 
-<form action="text">Title</form>
+<input type="text" placeholder="Enter Title Here...">
 <ul>
-  <li>Joke Here</li>
-  <li>Joke Here</li>
-  <li>Joke Here</li>
+  <li>{{joke}}</li>
+  <li>{{joke}}</li>
+  <li>{{joke}}</li>
 </ul>
 
 <br>
 
-<form action="text">Title</form>
+<input type="text" placeholder="Enter Title Here...">
 <ul>
-  <li>Joke Here</li>
-  <li>Joke Here</li>
-  <li>Joke Here</li>
+  <li>{{joke}}</li>
+  <li>{{joke}}</li>
+  <li>{{joke}}</li>
 </ul>
 </div>
 {{/if}}

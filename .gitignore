@@ -1,7 +1,4 @@
-<<<<<<< HEAD
 // Files to be ignored by Github
-=======
->>>>>>> b2a1656e17d1ab6e31d128def413db8be08fa538
 node_modules
 .env
 
