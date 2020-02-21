@@ -18,8 +18,17 @@ const boardSchema = new Schema(
     title: {
       type: String
     },
+    // the jokes that will belong to the board
+    jokes: {
+      type: [
+        {
+          type: Schema.Types.ObjectId,
+          ref: 'Jokes'
+        }
+      ],
+    },
     // the messages that belong to this board
-    messages: {
+    comments: {
       type: [
         {
           type: Schema.Types.ObjectId,
