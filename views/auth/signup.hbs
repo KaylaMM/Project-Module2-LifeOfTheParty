@@ -1,16 +1,5 @@
 <h2>Signup</h2>
 
-<<<<<<< HEAD
-<form class="auth-form" action="/auth/signup" method="POST" id="form-container">
-  <label for="username">Username</label>
-  <input id="username" type="text" name="username" placeholder="JonSnow">
-
-  <br><br>
-
-  <label for="password">Password</label>
-  <input id="password" type="password" name="password" placeholder="Your password">
-  <br>
-=======
 <form class="auth-form" action="/auth/signup" method="POST" id="form-container" enctype="multipart/form-data">
   <label for="username">Username</label>
   <input id="username" type="text" name="username" placeholder="JonSnow">
@@ -23,7 +12,6 @@
 <br><br>
   <label for="avatar">Profile Image</label>
   <input id="avatar" type="file" name="avatar">
->>>>>>> b2a1656e17d1ab6e31d128def413db8be08fa538
   {{#if message }}
   <div class="error-message">{{ message }}</div>
   {{/if}}

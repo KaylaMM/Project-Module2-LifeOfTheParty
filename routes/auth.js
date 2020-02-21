@@ -37,7 +37,6 @@ router.post("/login", (req, res, next) => {
 
             if (bcrypt.compareSync(req.body.password, userFromDB.password)) {
                 req.session.user = userFromDB;
-
                 res.locals.currentUser = req.session.user;
                 res.render("index");
             } else {
