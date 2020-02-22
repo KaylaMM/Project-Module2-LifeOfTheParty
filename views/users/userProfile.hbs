@@ -1,47 +1,54 @@
-{{userFromDB.email}}
-  
-  {{#if currentUser}}
 
-  {{!-- add/delete to board and store jokes --}}
-  {{!-- Jokes model, route, and views needed --}}
+{{!-- If User is not logged in, display: --}}
+{{#unless currentUser}}
+<a href="auth/login">Log In</a>
+<a href="auth/signup">Sign Up</a>
+{{/unless}}
 
-  {{!-- More pinterest style, all images --}}
-
-
-{{!-- onclick to save data to subsitute input field to title using DOM Manipulation --}}
-
+{{!-- User Info --}}
 
  <article>
    <img src="{{currentUser.avatar}}" alt="" height="200" width="200"> 
+ <ul>
+   <li>Hey {{currentUser.username}} !</li>
+   <li>Followers: {{currentUser.userFollowers.[{i}]}}</li>
+   <li>Following: {{currentUser.userFollowed.length}}</li>
+   <li>Boards:
+     <ul>{{#each currentUser.userBoards}}
+       <li>{{this.title}}</li>
+       {{/each}}
+     </ul>
+
+   </li>
+ </ul>
  </article>
 
-<div class="user_profile">
-<p>This is My Board</p>
+<form class="user-board" action="/boards/create" method="POST" id="form-container">
+  <label for="title">Title</label>
+  <input id="title" type="text" name="title" placeholder="Board Title Here...">
+<br><br>
+  {{#if message }}
+  <div class="error-message">{{ message }}</div>
+  {{/if}}
 
-<input type="text" placeholder="Enter Title Here...">
+  <br><br>
+
+  <button>Create Board</button>
+</form>
+
+
+{{!-- Boards --}}
+
+<article>
+  <div>
+
+  </div>
+
 <ul>
-  <li>{{joke}}</li>
-  <li>{{joke}}</li>
-  <li>{{joke}}</li>
+ <img src="{{meme}}" alt="" height="200" width="200"> 
+  <img src="{{meme}}" alt="" height="200" width="200"> 
 </ul>
 
-<br>
+</article>
 
-<input type="text" placeholder="Enter Title Here...">
-<ul>
-  <li>{{joke}}</li>
-  <li>{{joke}}</li>
-  <li>{{joke}}</li>
-</ul>
-
-<br>
-
-<input type="text" placeholder="Enter Title Here...">
-<ul>
-  <li>{{joke}}</li>
-  <li>{{joke}}</li>
-  <li>{{joke}}</li>
-</ul>
-</div>
-{{/if}}
 

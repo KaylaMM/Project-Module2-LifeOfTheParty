@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const User = require('./User')
 const { Schema, model } = mongoose;
 
 // in order to use .populate in the route file, you must first have the type for what you will populate as Schema.Types.ObjectId and make sure to ref (reference) the model that it will be searching that ID for in your db collection
@@ -19,7 +20,7 @@ const boardSchema = new Schema(
       type: String
     },
     // the jokes that will belong to the board
-    jokes: {
+    memes: {
       type: [
         {
           type: Schema.Types.ObjectId,

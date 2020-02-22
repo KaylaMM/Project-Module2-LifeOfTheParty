@@ -66,9 +66,21 @@ const cloudUpload = require("../../config/cloudinary-setup");
 //         .catch(err => next(err));
 // });
 
+// router.get('/profile/details', (req, res, next) => {
+//     res.render('users/userProfile');
+// });
+
 // Route to userProfile
 router.get("/profile", (req, res, next) => {
-    res.render("users/userProfile");
+    User.findById(req.session.user._id)
+    .populate("userBoards")
+    .then(userFound => {
+        console.log({userFound, boards: userFound.userBoards});
+        req.session.user = userFound;
+        // res.redirect("/users/profile/details")
+        res.render('users/userProfile');
+    })
+    .catch(err => console.log(err))
 });
 
 router.post("/profile/update", (req, res, next) => {
