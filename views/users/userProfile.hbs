@@ -1,4 +1,3 @@
-
 {{!-- If User is not logged in, display: --}}
 {{#unless currentUser}}
 <a href="auth/login">Log In</a>
@@ -6,22 +5,25 @@
 {{/unless}}
 
 {{!-- User Info --}}
-
- <article>
-   <img src="{{currentUser.avatar}}" alt="" height="200" width="200"> 
- <ul>
-   <li>Hey {{currentUser.username}} !</li>
-   <li>Followers: {{currentUser.userFollowers.[{i}]}}</li>
-   <li>Following: {{currentUser.userFollowed.length}}</li>
-   <li>Boards:
-     <ul>{{#each currentUser.userBoards}}
-       <li>{{this.title}}</li>
-       {{/each}}
-     </ul>
-
-   </li>
- </ul>
- </article>
+<article>
+  <img id="user-avatar" src="{{currentUser.avatar}}" alt="user_avatar" height="200" width="200"> 
+</article>
+<ul id="userDetails">
+  <li>Hey {{currentUser.username}} !</li>
+  <li>Email: {{currentUser.email}}</li>
+  <button id="update-button">Update Profile</button>
+</ul>
+<ul>
+  <li>Followers: {{currentUser.userFollowers.[{i}]}}</li>
+  <li>Following: {{currentUser.userFollowed.length}}</li>
+  <li>Boards:
+    <ul>{{#each currentUser.userBoards}}
+      <li>{{this.title}}</li>
+        {{/each}}
+    </ul>
+  </li>
+</ul>
+</article>
 
 <form class="user-board" action="/boards/create" method="POST" id="form-container">
   <label for="title">Title</label>
