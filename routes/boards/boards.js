@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const Board = require("../../models/Board.js");
+const Board = require("../../models/Board");
 const User = require("../../models/User");
 
 
@@ -86,6 +86,8 @@ router.get("/details/:boardId", (req, res, next) => {
 
 // create a board for messages
 router.post("/create", (req, res, next) => {
+  console.log("new board info >>>>>>>>>>>> ", req.body);
+  console.log("req ==> ==> ==> ==> ==> ", req);
   // for some of our routes, we may want the user to be logged in like on this one that a user is required in order to add the author to the board. For cases like this we can do a simple check for req.session.user and the user is not logged in then we can redirect them to the login page
   if (!req.session.user) {
     res.redirect("/auth/login");
@@ -94,30 +96,24 @@ router.post("/create", (req, res, next) => {
   }
 
   const newBoard = req.body;
+  console.log({newBoard});
   newBoard.author = req.session.user._id;
+  console.log(newBoard.author);
 
   Board.create(newBoard)
     .then(newlyCreatedBoard => {
-      // at this point after creating a board you will have 2 options. One is to redirect the user to a general endpoint and that is that.
-      // res.redirect("/boards");
+      
+      console.log(newlyCreatedBoard);
 
-      // the other option is that you can use the information from the db that just got created and redirect a user to a details page for that newly created item like the example below
-      // res.redirect(`/boards/details/${newlyCreatedBoard._id}`);
-
-      // in our case we will also be adding the board that was created to the user that created it which is also the author of the board. This way when we check the users profile, we will be able to see all the boards that belong to the user
       User.findByIdAndUpdate(
         req.session.user._id,
         { $push: { userBoards: newlyCreatedBoard._id } },
         { new: true }
       )
         .then(updatedUser => {
-          // when using nested .thens, you have access to all variables previously assigned in the parent and grandparent thens in the child then which is why we can still call newlyCreatedBoard now.
-
-          // now using the newCreatedBoard variable we will redirect the user to the details page of the newly created board
-
-          // every time we updated the user on the db we must also updated the user information on session.
-          res.session.user = updatedUser;
-          res.redirect(`/boards/details/${newlyCreatedBoard._id}`);
+          console.log('>>>>',req.session.user,updatedUser.userBoards)
+          req.session.user = updatedUser;
+          res.redirect(`/users/profile`);
         })
         .catch(err => next(err));
     })

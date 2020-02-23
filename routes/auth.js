@@ -24,10 +24,12 @@ router.get("/login", (req, res, next) => {
 // );
 
 router.post("/login", (req, res, next) => {
+    console.log("logging in the user")
     User.findOne({ username: req.body.username })
         .then(userFromDB => {
+            console.log("the user info ------------ ", userFromDB);
             if (userFromDB === null) {
-            console.log(userFromDB);
+            console.log({userFromDB});
 
                 res.render("auth/login", {
                     message: "That username was not found in the system"
@@ -37,8 +39,8 @@ router.post("/login", (req, res, next) => {
 
             if (bcrypt.compareSync(req.body.password, userFromDB.password)) {
                 req.session.user = userFromDB;
-                res.locals.currentUser = req.session.user;
-                res.render("index");
+                // res.locals.currentUser = req.session.user;
+                res.redirect("/");
             } else {
                 res.render("auth/login", { message: "Incorrect Password" });
                 return;
