@@ -135,23 +135,6 @@ const getIdFromEvent = event => {
   return event.target.form.action.match(/https?.*\/(.*)\??/)[1];
 };
 
-
-// ON CLICK CODE FROM MEMORY GAME
-// document.querySelector(".categoryTitle").forEach(categoryTitle => {
-//   categoryTitle.onclick = function() {
-//     // TODO: write some code here
-//     const enteredTitle = document.getElementById("titleEntered");
-
-//     console.log("Title Entered: ", categoryTitle);
-//     // boardSchema.categoryTitle.push(categoryTitle);
-//     // console.log(memoryGame.pickedCards);
-//     if (titleEntered === 1) {
-//       const firstInPair = memoryGame.pickedCards[0];
-//       const secondInPair = memoryGame.pickedCards[1];
-//       const cardName1 = firstInPair.getAttribute("data-card-name");
-//       const cardName2 = secondInPair.getAttribute("data-card-name");
-//       // console.log(cardName1, cardName2);
-
 // Update user profile details
 document.getElementById('update-button').onclick = updateButton = () => {
   document.getElementById('userDetails').innerHTML = `
