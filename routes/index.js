@@ -8,8 +8,13 @@ router.get("/", (req, res, next) => {
     axios
     .get(apiUrl)
     .then(responseFromAPI => {
-        console.log("The response from API: ", responseFromAPI.data.memes)
-        res.render("index", responseFromAPI)})
+        
+        // console.log("The response from API: ", responseFromAPI.data.memes)
+        responseFromAPI.data.memes.forEach(oneMeme => {
+            console.log({oneMeme});
+        })
+        res.render("index", {memes: responseFromAPI.data.memes})
+    })
     .catch(err => console.log("Error while getting the data: ", err));
 });
 
