@@ -1,15 +1,12 @@
-<h1>{{title}}</h1>
 {{#if currentUser}}
-    {{#each responseFromAPI.data}}
-        {{#each memes}}
-        <div class="card p-5" style="width: 18rem; pad">
-            <img src="{{url}}" class="card-img-top" alt="meme">
-        </div>
-        {{/each}}
+    {{#each memes}}
+    <div class="card p-5" style="width: 18rem; pad">
+        <img src="{{this.url}}" class="card-img-top" alt="meme">
+    </div>
     {{/each}}
-{{/if}}
+{{/if}} 
 
 {{#unless currentUser}}
-<a href="auth/login">Log In</a>
-<a href="auth/signup">Sign Up</a>
+    <a href="auth/login">Log In</a>
+    <a href="auth/signup">Sign Up</a>
 {{/unless}}

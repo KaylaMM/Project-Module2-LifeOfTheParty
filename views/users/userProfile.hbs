@@ -28,29 +28,22 @@
 <form class="user-board" action="/boards/create" method="POST" id="form-container">
   <label for="title">Title</label>
   <input id="title" type="text" name="title" placeholder="Board Title Here...">
-<br><br>
+  <br><br>
   {{#if message }}
   <div class="error-message">{{ message }}</div>
   {{/if}}
-
   <br><br>
-
   <button>Create Board</button>
 </form>
 
-
 {{!-- Boards --}}
-
 <article>
-  <div>
-
+  <div></div>
   </div>
-
 <ul>
  <img src="{{meme}}" alt="" height="200" width="200"> 
   <img src="{{meme}}" alt="" height="200" width="200"> 
 </ul>
-
 </article>
 
 
