@@ -57,18 +57,10 @@ const cloudUpload = require("../../config/cloudinary-setup");
 //     }
 // );
 
-// // this route will lead to the same profile page as the above route but instead will be for when a user is visiting another users profile which will display the information only and not allow the current user to edit the profile.
-// router.get("/profile/:userId", (req, res, next) => {
-//     User.findById(req.params.userId)
-//         .then(userFromDB => {
-//             res.render("users/userProfile", { userFromDB });
-//         })
-//         .catch(err => next(err));
-// });
-
-// router.get('/profile/details', (req, res, next) => {
-//     res.render('users/userProfile');
-// });
+// Route to open user profile
+router.get('/profile/details', (req, res, next) => {
+    res.render('users/userProfile');
+});
 
 // Route to userProfile
 router.get("/profile", (req, res, next) => {
@@ -77,21 +69,28 @@ router.get("/profile", (req, res, next) => {
     .then(userFound => {
         console.log({userFound, boards: userFound.userBoards});
         req.session.user = userFound;
-        // res.redirect("/users/profile/details")
-        res.render('users/userProfile');
+        res.redirect("/users/profile/details")
     })
     .catch(err => console.log(err))
 });
 
-router.post("/profile/update", (req, res, next) => {
-    User.findByIdAndUpdate(req.session.user._id, req.body, { new: true })
-        .then(updatedUser => {
-            req.session.user = updatedUser;
-            res.locals.currentUser = req.session.user;
-            res.redirect("back");
-        })
-        .catch(err => next(err));
+// Route to update users' profile
+router.post(
+    "/profile/update", 
+    cloudUpload.single("uploadedImage"), 
+    (req, res, next) => {
+        User.findByIdAndUpdate(req.session.user._id, 
+            req.body, 
+            { new: true })
+            .then(updatedUser => {
+                console.log(updatedUser);
+                req.session.user = updatedUser;
+                res.locals.currentUser = req.session.user;
+                res.redirect(`/users/profile`);;
+            })
+            .catch(err => console.log(err));
 });
+
 
 router.post(
     "/profile/file-upload",
@@ -114,9 +113,20 @@ router.post(
 router.get("/profile/:userId", (req, res, next) => {
     User.findById(req.params.userId)
         .then(userFromDB => {
-            res.render("users/userProfile", { userFromDB });
+            res.render("users/userProfile", {userFromDB});
         })
         .catch(err => next(err));
+});
+
+router.post('/profile/delete', (req, res, next) => {
+    User.findByIdAndRemove(req.session.user._id)
+    .then(() => {
+        req.session.destroy();
+        res.redirect('/');
+    })
+    .catch(err => {
+        console.log(`Error while deleting user from database: ${err}`);
+    });
 });
 
 module.exports = router;

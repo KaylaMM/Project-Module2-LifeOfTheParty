@@ -1,21 +1,5 @@
 const bodyTag = document.getElementsByTagName("body")[0].attributes[0].value;
 
-document.addEventListener(
-  "DOMContentLoaded",
-  event => {
-    console.log("IronGenerator JS imported successfully!");
-
-    setInterval(
-      () => {
-        checkMessageUpdates();
-      },
-      bodyTag === "messageBoardDetails" ? 2000 : 0
-    );
-  },
-
-  false
-);
-
 const checkMessageUpdates = () => {
   // If reply is typed no update happens
   const replyTyped = [...document.getElementsByName("reply")].every(
@@ -151,19 +135,19 @@ const getIdFromEvent = event => {
   return event.target.form.action.match(/https?.*\/(.*)\??/)[1];
 };
 
-
-// ON CLICK CODE FROM MEMORY GAME
-// document.querySelector(".categoryTitle").forEach(categoryTitle => {
-//   categoryTitle.onclick = function() {
-//     // TODO: write some code here
-//     const enteredTitle = document.getElementById("titleEntered");
-
-//     console.log("Title Entered: ", categoryTitle);
-//     // boardSchema.categoryTitle.push(categoryTitle);
-//     // console.log(memoryGame.pickedCards);
-//     if (titleEntered === 1) {
-//       const firstInPair = memoryGame.pickedCards[0];
-//       const secondInPair = memoryGame.pickedCards[1];
-//       const cardName1 = firstInPair.getAttribute("data-card-name");
-//       const cardName2 = secondInPair.getAttribute("data-card-name");
-//       // console.log(cardName1, cardName2);
+// Update user profile details
+document.getElementById('update-button').onclick = updateButton = () => {
+  document.getElementById('userDetails').innerHTML = `
+  <form class="auth-form" action="/users/profile/update" method="POST" id="form-container" enctype="multipart/form-data">
+    <br><br>
+    <li>Username: <input id="username" type="text" name="username" placeholder={{currentUser.username}}>
+    <li>Email: <input id="email" type="email" name="email" placeholder="New email"></li>
+    <li><label for="avatar">Profile Image:</label></li>
+    <input id="avatar" type="file" name="avatar">
+    <br><br>
+    <button type="submit">Update details</button>
+    <form class="auth-form" action="/users/profile/delete" method="POST" id="form-container" enctype="multipart/form-data">
+      <button type="submit">Delete profile</button>
+    </form>
+  </form>`
+}

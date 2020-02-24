@@ -101,15 +101,12 @@ router.post("/create", (req, res, next) => {
   console.log(newBoard.author);
 
   Board.create(newBoard)
-    .then(newlyCreatedBoard => {
-      
+    .then(newlyCreatedBoard => {      
       console.log(newlyCreatedBoard);
-
       User.findByIdAndUpdate(
         req.session.user._id,
         { $push: { userBoards: newlyCreatedBoard._id } },
-        { new: true }
-      )
+        { new: true })
         .then(updatedUser => {
           console.log('>>>>',req.session.user,updatedUser.userBoards)
           req.session.user = updatedUser;

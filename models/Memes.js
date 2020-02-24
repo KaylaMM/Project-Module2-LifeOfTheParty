@@ -2,10 +2,10 @@ const mongoose = require("mongoose");
 const { Schema, model } = mongoose;
 
 
-const jokesSchema = new Schema(
+const memesSchema = new Schema(
   {
     // The joke type
-    joke: {
+    meme: {
         type: String,
         trim: true,
     }
@@ -13,5 +13,5 @@ const jokesSchema = new Schema(
   { timestamps: true }
 );
 
-const Jokes = model("Jokes", jokesSchema);
-module.exports = Jokes;
+const Memes = model("Jokes", memesSchema);
+module.exports = Memes;
