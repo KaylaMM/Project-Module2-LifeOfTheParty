@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const User = require("../../models/User");
+const Board = require("../../models/Board")
 const cloudUpload = require("../../config/cloudinary-setup");
 
 // this route will be so that we can update the users profile information if they edit any of the fields. Since each sessions user is unique then we can create a route without having to pass the users id in the endpoint.
@@ -62,7 +63,7 @@ router.get('/profile/details', (req, res, next) => {
     res.render('users/userProfile');
 });
 
-// Route to userProfile
+// Route to userProfile details
 router.get("/profile", (req, res, next) => {
     User.findById(req.session.user._id)
     .populate("userBoards")

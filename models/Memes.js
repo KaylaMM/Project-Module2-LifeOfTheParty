@@ -13,5 +13,5 @@ const memesSchema = new Schema(
   { timestamps: true }
 );
 
-const Memes = model("Jokes", memesSchema);
+const Memes = model("Memes", memesSchema);
 module.exports = Memes;

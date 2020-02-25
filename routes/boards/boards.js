@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const Board = require("../../models/Board");
 const User = require("../../models/User");
-
+const Memes = require('../../models/Memes');
 
 // Display Profile
 router.get("/", (req, res, next) => {
@@ -30,33 +30,18 @@ router.get("/", (req, res, next) => {
     .catch(err => next(err));
 });
 
-//NOT SURE IF ROUTE NEEDS TO BE MADE FOR TITLE
-// router.get("/users/:messageId", (req, res, next) => {
-//   Message.findById(req.params.messageId)
-//       .populate({ path: "replies", populate: { path: "author" } })
-//       .then(messageFromDB => {
-//           res.render("messages/messageDetails", { messageFromDB });
-//       })
-//       .catch(err => next(err));
-// });
-
-// NOT SURE IF THIS IS
-// this route we will use to refresh the messages on the board details page so that we do not have to refresh the page over and over on new input. Thus allowing users to see newly added messages without them having to reload the page.
-// we will be calling this route from our script file and will place it before the initial details route so that we can catch the /refresh at the end of the endpoint
-// we are also using the same endpoint because it will require less coding to grab the url in our script file and thus we will not have to modify the url much.
-// router.get("/details/:boardId/refresh", (req, res, next) => {
-//   Board.findById(req.params.boardId)
-//     .populate({
-//       path: "messages",
-//       populate: [{ path: "replies" }, { path: "author" }]
-//     })
-//     .populate("followers")
-//     .then(boardFromDB => {
-//       // in order to get the information from this route via an axios call, we will have to use a json response. We use render to display a view page and redirect to reroute to another route within the apps get routes.
-//       res.status(200).json(boardFromDB);
-//     })
-//     .catch(err => next(err));
-// });
+//Route for board details
+router.get("/:boardId", (req, res, next) => {
+  console.log("here")
+  console.log(req.params.boardId);
+  Board.findById(req.params.boardId)
+    .populate("memes")
+    .then(boardFromDB => {
+      console.log(boardFromDB);
+      res.render("boards/boardDetails", { boardFromDB });
+    })
+    .catch(err => console.log(err));
+});
 
 // display the specific board page
 router.get("/details/:boardId", (req, res, next) => {
@@ -96,19 +81,20 @@ router.post("/create", (req, res, next) => {
   }
 
   const newBoard = req.body;
-  console.log({newBoard});
+  console.log({ newBoard });
   newBoard.author = req.session.user._id;
   console.log(newBoard.author);
 
   Board.create(newBoard)
-    .then(newlyCreatedBoard => {      
+    .then(newlyCreatedBoard => {
       console.log(newlyCreatedBoard);
       User.findByIdAndUpdate(
         req.session.user._id,
         { $push: { userBoards: newlyCreatedBoard._id } },
-        { new: true })
+        { new: true }
+      )
         .then(updatedUser => {
-          console.log('>>>>',req.session.user,updatedUser.userBoards)
+          console.log(">>>>", req.session.user, updatedUser.userBoards);
           req.session.user = updatedUser;
           res.redirect(`/users/profile`);
         })
@@ -116,6 +102,26 @@ router.post("/create", (req, res, next) => {
     })
     .catch(err => next(err));
 });
+
+
+router.post("/update/:boardId", (req, res, next) => {
+  console.log(req.params.boardId)
+  Board.findByIdAndUpdate(req.params.boardId, {new: true})
+  .then( updatedBoard => {
+    console.log(updatedBoard)
+    res.render("/boards/boardDetails", {updatedBoard})
+  }).catch(err => console.log(err));
+})
+
+
+
+
+
+
+
+
+
+
 
 // delete a board, only the author or admin should be able too delete a board
 router.post("/delete/:boardId", (req, res, next) => {
@@ -142,9 +148,6 @@ router.post("/delete/:boardId", (req, res, next) => {
 router.post("/followers/:boardId", (req, res, next) => {
   Board.findById(req.params.boardId)
     .then(boardFromDB => {
-      // in order for us not to have to make 2 routes to add follower and remove a follower, we can use the .save() method with a conditional statement prior in order to check whether a user._id already exists in the array.
-      // if it exists then we pull the id from the array, else we push it in.
-      // Afterwards we will save the information on the db.
       if (boardFromDB.followers.includes(req.session.user._id)) {
         boardFromDB.pull(req.session.user._id);
       } else {
@@ -153,34 +156,14 @@ router.post("/followers/:boardId", (req, res, next) => {
       boardFromDB
         .save()
         .then(updatedBoard => {
-          // as mentioned above the code below is one of the options after an update for where to send the user.
-          // res.redirect(`/boards/details/${updatedBoard._id}`);
-
-          // in this case I would like the user to stay on the page they are on when the click to follow a board.
           res.redirect("back");
-          // if you want the user to refresh the page they are  on then you can use res.redirect('back') <-- back basically means back to where you were at.
         })
         .catch(err => next(err));
     })
     .catch(err => next(err));
 });
 
-// this route is another update route that we will use in order to add messages to the board
-// router.get("/add-message/:boardId/:messageId", (req, res, next) => {
-//   // when updating we must add {new: true} in order to get the updated information from the db, otherwise you will get the information that is on the db prior to the update
-//   Board.findByIdAndUpdate(
-//     req.params.boardId,
-//     {
-//       $push: { messages: req.params.messageId }
-//     },
-//     { new: true }
-//   )
-//     .then(updatedBoard => {
-//       res.status(200).json(updatedBoard);
-//       // next();
-//     })
-//     .catch(err => next(err));
-// });
+
 
 router.get("/add-message/:boardId/:messageId", (req, res, next) => {
   // when updating we must add {new: true} in order to get the updated information from the db, otherwise you will get the information that is on the db prior to the update
