@@ -28,7 +28,7 @@ router.post("/update/:messageId/:replyId", (req, res, next) => {
         req.params.messageId,
         { $push: { replies: req.params.replyId } },
         { new: true }
-    )
+        )
         .then(updatedMessage => {
             next();
         })

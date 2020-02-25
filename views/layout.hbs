@@ -8,6 +8,11 @@
   <title>{{title}}</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link rel="stylesheet" href="/stylesheets/style.css">
+  
+  
+  {{!-- your styles come last --}}
+
+
 </head>
 <body class="{{bodyClass}}">
   <nav>
@@ -16,6 +21,7 @@
       {{!-- <a href="/">Sign In</a> --}}
       {{!-- <a href="/boards">My LOP Board</a> --}}
     {{!-- </div> --}}
+  
     <div>
       <a href="/">Home</a>
       <a href="/users/profile">Boards</a>
@@ -30,10 +36,14 @@
       <a href="/auth/signup">Signup</a>
       {{/if}}
     </div>
+  
   </nav>
+   
+
   {{{body}}}
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-  <script src="/javascripts/script.js"></script>
+
+ 
 </body>
 
 </html>

@@ -9,7 +9,15 @@
     {{/each}}
 {{/if}}
 
+<div class="logo"><b>Life<span>Of</span>The<span>Party</span></b></div>
+{{!-- <img src="//images.weserv.nl/?url=i.imgur.com/6QJjYMe.jpg" alt="">  --}}
+{{!-- <div class="backgroundImage"></div> --}}
+
 {{#unless currentUser}}
+<div class="lowerMainButtons">
 <a href="auth/login">Log In</a>
+</div>
+<div class="lowerMainButtons">
 <a href="auth/signup">Sign Up</a>
+</div>
 {{/unless}}
