@@ -15,11 +15,9 @@
 </head>
 <body class="{{bodyClass}}">
   <nav>
-    {{!-- here we separate the links into divs in order to use flexbox to space the links out to each end of the screen. (auth links to the far right and other links for the app in the far left) --}}
-    {{!-- <div> --}}
-      {{!-- <a href="/">Sign In</a> --}}
-      {{!-- <a href="/boards">My LOP Board</a> --}}
-    {{!-- </div> --}}
+
+{{!-- -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=NAV BAR=-=-=--=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- --}}
+
     <div>
       <a href="/">Home</a>
       <a href="/users/profile">Boards</a>
@@ -27,7 +25,7 @@
     <div>
       {{#if currentUser}}
       <span>Hi, {{ currentUser.username }}</span>
-      <a href="/users/profile"><img src={{currentUser.avatar}} alt="avatar"></a>
+      <a href="/users/profile"><img src={{currentUser.avatar}} alt="avatar" width="100px" height="100px"></a>
       <a href="/auth/logout">Logout</a>
       {{else}}
       <a href="/auth/login">Login</a>
@@ -38,9 +36,12 @@
   {{{body}}}
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
  
-{{!-- <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
-<script src="//code.jquery.com/jquery-1.11.1.min.js"></script> --}}
+
 <script src="/javascripts/script.js"></script>
 </body>
 
 </html>
+
+{{!-- -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=MICHAELA'S CODE-=-=-=--=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- --}}
+
+
