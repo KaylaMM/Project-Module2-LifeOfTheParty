@@ -6,22 +6,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>{{title}}</title>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
   <link rel="stylesheet" href="/stylesheets/style.css">
-  
-  
+
+
   {{!-- your styles come last --}}
 
 
 </head>
+
 <body class="{{bodyClass}}">
   <nav>
     {{!-- here we separate the links into divs in order to use flexbox to space the links out to each end of the screen. (auth links to the far right and other links for the app in the far left) --}}
     {{!-- <div> --}}
-      {{!-- <a href="/">Sign In</a> --}}
-      {{!-- <a href="/boards">My LOP Board</a> --}}
+    {{!-- <a href="/">Sign In</a> --}}
+    {{!-- <a href="/boards">My LOP Board</a> --}}
     {{!-- </div> --}}
-  
+
     <div>
       <a href="/">Home</a>
       <a href="/users/profile">Boards</a>
@@ -36,14 +39,18 @@
       <a href="/auth/signup">Signup</a>
       {{/if}}
     </div>
-  
+
   </nav>
-   
+
 
   {{{body}}}
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="/javascripts/script.js"></script>
 
- 
+
+  {{!-- Kayla's code --}}
+  <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+  <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 </body>
 
 </html>
