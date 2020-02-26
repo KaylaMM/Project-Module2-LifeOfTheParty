@@ -24,7 +24,7 @@ const boardSchema = new Schema(
       type: [
         {
           type: Schema.Types.ObjectId,
-          ref: 'Jokes'
+          ref: 'Memes'
         }
       ],
     },

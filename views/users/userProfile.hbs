@@ -1,4 +1,5 @@
 {{!-- If User is not logged in, display: --}}
+
 {{#unless currentUser}}
 <a href="auth/login">Log In</a>
 <a href="auth/signup">Sign Up</a>
@@ -11,6 +12,8 @@
 <ul id="userDetails">
   <li>Hey {{currentUser.username}} !</li>
   <li>Email: {{currentUser.email}}</li>
+  <input type="hidden" id="hidden1" value="{{currentUser.username}}">
+  <input type="hidden" id="hidden2" value="{{currentUser.email}}">
   <button id="update-button">Update Profile</button>
 </ul>
 <ul>
@@ -18,7 +21,9 @@
   <li>Following: {{currentUser.userFollowed.length}}</li>
   <li>Boards:
     <ul>{{#each currentUser.userBoards}}
-      <li>{{this.title}}</li>
+      <li>
+        <a href="/boards/{{this._id}}"> {{this.title}}</a>
+      </li>
         {{/each}}
     </ul>
   </li>
@@ -46,4 +51,5 @@
 </ul>
 </article>
 
+<script src="/javascripts/userProfile-DOM.js"></script>
 

@@ -6,6 +6,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>{{title}}</title>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+    integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+    integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+    crossorigin="anonymous"></script>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
@@ -18,39 +27,60 @@
 </head>
 
 <body class="{{bodyClass}}">
-  <nav>
+  <nav id="nav-bar">
     {{!-- here we separate the links into divs in order to use flexbox to space the links out to each end of the screen. (auth links to the far right and other links for the app in the far left) --}}
     {{!-- <div> --}}
     {{!-- <a href="/">Sign In</a> --}}
     {{!-- <a href="/boards">My LOP Board</a> --}}
     {{!-- </div> --}}
 
-    <div>
+    {{!-- -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=NAV BAR=-=-=--=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- --}}
+
+    {{!-- <div>
       <a href="/">Home</a>
       <a href="/users/profile">Boards</a>
     </div>
     <div>
       {{#if currentUser}}
       <span>Hi, {{ currentUser.username }}</span>
-      <a href="/users/profile"><img src={{currentUser.avatar}} alt="avatar"></a>
+      <a href="/users/profile"><img src={{currentUser.avatar}} alt="avatar" width="100px" height="100px"></a>
       <a href="/auth/logout">Logout</a>
       {{else}}
       <a href="/auth/login">Login</a>
       <a href="/auth/signup">Signup</a>
       {{/if}}
-    </div>
+    </div> --}}
+
+      <div>
+        <img
+          src="/Users/michaeladecamara/Ironhack/Module-2/Project-Module2-LifeOfTheParty/public/images/transparent-laughing-face-clipart-black-and-white-laughing.png"
+          width="150px" height="150px">
+
+        <a href="/">Home</a>
+        <a href="/users/profile">Boards</a>
+      </div>
+      <div>
+        {{#if currentUser}}
+        <span>Hi, {{ currentUser.username }}</span>
+        <a href="/users/profile"><img src={{currentUser.avatar}} alt="avatar" width="100px"
+            height="100px"></a>
+        <a href="/auth/logout">Logout</a>
+        {{else}}
+        <a href="/auth/login">Login</a>
+        <a href="/auth/signup">Signup</a>
+        {{/if}}
+      </div>
 
   </nav>
 
 
   {{{body}}}
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+
+
   <script src="/javascripts/script.js"></script>
 
-
-  {{!-- Kayla's code --}}
-  <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
-  <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 </body>
 
 </html>
