@@ -24,21 +24,20 @@ router.get("/login", (req, res, next) => {
 // );
 
 router.post("/login", (req, res, next) => {
-    User.findOne({ username: req.body.username })
+    User.findOne({username: req.body.username})
         .then(userFromDB => {
             if (userFromDB === null) {
             console.log(userFromDB);
-
                 res.render("auth/login", {
                     message: "That username was not found in the system"
                 });
                 return;
             }
-
             if (bcrypt.compareSync(req.body.password, userFromDB.password)) {
+                console.log(userFromDB)
                 req.session.user = userFromDB;
                 res.locals.currentUser = req.session.user;
-                res.render("index");
+                res.redirect("/");
             } else {
                 res.render("auth/login", { message: "Incorrect Password" });
                 return;
@@ -60,7 +59,7 @@ router.post("/signup", uploadCloud.single('avatar'), (req, res, next) => {
             message: "Missing required information"
         });
         return;
-    }
+    } 
     User.findOne({ username }, "username", (err, user) => {
         if (user !== null) {
             res.render("auth/signup", {
@@ -91,8 +90,6 @@ router.post("/signup", uploadCloud.single('avatar'), (req, res, next) => {
 });
 
 router.get("/logout", (req, res) => {
-    // when using passport we can log the user out by calling req.logout(). Since we are not using passport we have to call req.session.destroy() in order to kill the session and remove the data it is currently storing.
-    // req.logout();
     req.session.destroy();
     res.redirect("/");
 });

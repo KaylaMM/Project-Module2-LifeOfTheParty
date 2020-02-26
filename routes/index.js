@@ -1,21 +1,30 @@
 const express = require("express");
 const router = express.Router();
 const axios = require("axios");
+const User = require("../models/User");
+const Board = require("../models/Board")
 const apiUrl = `https://meme-api.herokuapp.com/gimme/100`;
 
 /* GET home page */
 router.get("/", (req, res, next) => {
-    axios
-    .get(apiUrl)
-    .then(responseFromAPI => {
-        
-        // console.log("The response from API: ", responseFromAPI.data.memes)
-        responseFromAPI.data.memes.forEach(oneMeme => {
-            console.log({oneMeme});
-        })
-        res.render("index", {memes: responseFromAPI.data.memes})
-    })
-    .catch(err => console.log("Error while getting the data: ", err));
+    if (req.session.user) {
+       User.findById(req.session.user._id)
+        .populate("userBoards")
+        .then(currentUser => {
+            axios
+                .get(apiUrl)
+                .then(responseFromAPI => {
+                res.render("index", {
+                    memes: responseFromAPI.data.memes,
+                    userBoards: currentUser.userBoards
+                })
+            })
+            .catch(err => console.log("Error while getting the data: ", err));
+            })
+        .catch(err => console.log("Error while getting the data: ", err)) 
+    } else {
+        res.render("index");
+    }
 });
 
 module.exports = router;
