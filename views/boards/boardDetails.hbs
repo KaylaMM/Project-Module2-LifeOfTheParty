@@ -1,11 +1,8 @@
 <div id="board-details">
   <h1>{{boardFromDB.title}}</h1>
-  <button id="update-board-button">Update Board</button>
   <input type="hidden" id="boardTitle" value="{{boardFromDB.title}}">
+  <input type="hidden" id="boardId" value="{{boardFromDB._id}}">
+  <button id="update-board-button">Update Board</button>
 </div>
 
-<script src="/javascripts/board-dom.js"></script>
-
-
-
- {{!-- <button id="update-board-button">Update Profile</button> --}}
+<script src="/javascripts/board-DOM.js"></script>
