@@ -1,9 +1,22 @@
 {{#if currentUser}}
-    {{#each memes}}
-    <div class="card p-5" style="width: 18rem; pad">
-        <img src="{{this.url}}" class="card-img-top" alt="meme">
+    <div class="card-columns">
+        {{#each memes}}
+        <div class="card p-5">
+            <img src="{{this.url}}" class="card-img-top m-2" alt="meme">
+            <div class="m-3">
+                <form action="POST" action="">
+                    <button type="submit">Save meme to board: </button>
+                    <select type="select" name="boardId" id="board-selector">
+                        <option value=""></option>
+                        {{#each ../userBoards}}
+                            <option value="{{this._id}}">{{this.title}}</option>     
+                        {{/each}}
+                    </select>
+                </form>
+            </div>
+        </div>
+        {{/each}}
     </div>
-    {{/each}}
 {{/if}} 
 
 {{#unless currentUser}}
