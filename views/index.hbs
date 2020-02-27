@@ -1,5 +1,4 @@
 {{#if currentUser}}
-
 <nav>
       <div>
         <a href="/">Home</a>
@@ -16,28 +15,26 @@
         {{/if}}
       </div>
     </nav>
-
-
-    <div class="card-columns">
+    <div class="card-columns m-5">
         {{#each memes}}
-        <div class="card p-5">
+        <div class="card p-4">
             <img src="{{this.url}}" class="card-img-top m-2" alt="meme">
             <div class="m-3">
-                <form action="POST" action="">
-                    <button type="submit">Save meme to board: </button>
+                <form method="POST" action="/boards/add-meme">
+                    <input type="hidden" id="hiddenInput" value="{{this.url}}" name="memeUrl">
                     <select type="select" name="boardId" id="board-selector">
                         <option value=""></option>
                         {{#each ../userBoards}}
                             <option value="{{this._id}}">{{this.title}}</option>     
                         {{/each}}
                     </select>
+                    <button type="submit">Save meme to board</button>
                 </form>
             </div>
         </div>
         {{/each}}
     </div>
 {{/if}} 
-
 {{#unless currentUser}}
     <a href="auth/login">Log In</a>
     <a href="auth/signup">Sign Up</a>
