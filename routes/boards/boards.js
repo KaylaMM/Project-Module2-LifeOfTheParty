@@ -9,32 +9,27 @@ router.get("/:boardId", (req, res, next) => {
   Board.findById(req.params.boardId)
     .populate("memes")
     .then(boardFromDB => {
-      res.render("boards/boardDetails", {boardFromDB});
+      console.log(boardFromDB);
+      res.render("boards/boardDetails", boardFromDB);
     })
     .catch(err => console.log(err));
 });
 
 // Create a board for memes
 router.post("/create", (req, res, next) => {
-  console.log("new board info >>>>>>>>>>>> ", req.body);
-  console.log("req ==> ==> ==> ==> ==> ", req);
   if (!req.session.user) {
     res.redirect("/auth/login");
     return;
   }
-
   const newBoard = req.body;
-  console.log({ newBoard });
   newBoard.author = req.session.user._id;
-  console.log(newBoard.author);
-
   Board.create(newBoard)
     .then(newlyCreatedBoard => {
       console.log(newlyCreatedBoard);
       User.findByIdAndUpdate(
         req.session.user._id,
-        { $push: { userBoards: newlyCreatedBoard._id } },
-        { new: true }
+        {$push: { userBoards: newlyCreatedBoard._id}},
+        {new: true}
       )
         .then(updatedUser => {
           console.log(">>>>", req.session.user, updatedUser.userBoards);
@@ -79,7 +74,7 @@ router.post("/delete/:boardId", (req, res, next) => {
     .catch(err => next(err));
 });
 
-// update the board to either add or remove a follower
+// Update the board to either add or remove a follower
 router.post("/followers/:boardId", (req, res, next) => {
   Board.findById(req.params.boardId)
     .then(boardFromDB => {
@@ -96,6 +91,35 @@ router.post("/followers/:boardId", (req, res, next) => {
         .catch(err => next(err));
     })
     .catch(err => next(err));
+});
+
+// Update the board to add memes
+router.post("/add-meme", (req, res, next) => {
+  Memes.create({meme: req.body.memeUrl})
+    .then(savedMeme => {
+      Board.findByIdAndUpdate(req.body.boardId, {$push: {"memes": savedMeme._id}}, {new: true})
+        .then(boardFromDB => {
+          console.log(boardFromDB);
+          res.redirect("back");
+        })
+        .catch(err => next(err));
+    })
+    .catch(err => console.log("Error saving meme: ", err))
+});
+
+// Update the board to remove memes
+router.post("/remove-meme", (req, res, next) => {
+  console.log(req.body);
+  Memes.findByIdAndDelete(req.body.memeId)
+    .then(() => {
+      Board.findByIdAndUpdate(req.body.boardId, {$pull: {"memes": req.body}}, {new: true})
+        .then(boardFromDB => {
+          console.log(boardFromDB);
+          res.redirect("back");
+        })
+        .catch(err => next(err));
+    })
+    .catch(err => console.log("Error saving meme: ", err))
 });
 
 module.exports = router;
