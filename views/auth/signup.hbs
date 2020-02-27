@@ -1,50 +1,118 @@
-<div class="container">    
-  <div id="loginbox" style="margin-top:50px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">                    
-    <div class="panel panel-info" >
-      <div class="panel-heading">
-        <div class="panel-title">Sign Up</div>
-      </div>     
-{{!-- ====================== SPACING BETWEEN PANEL AND INPUTS h======================== --}}
-      <div style="padding-top:30px" class="panel-body">
-          <div style="display:none" id="form-container" class="alert alert-danger col-sm-12"></div>
-              <form class="auth-form" action="/auth/signup" method="POST" id="form-container" enctype="multipart/form-data">
-{{!-- ====================== Username ========================= --}}
-      <div style="margin-bottom: 25px" class="input-group">
-          <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-              <input id="signup-username" type="text" class="form-control" name="username" value="" placeholder="Username">                                        
-      </div>
-{{!-- ======================== Email ========================== --}}
-      <div style="margin-bottom: 25px" class="input-group">
-          <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-              <input id="signup-email" type="text" class="form-control" name="email" value="" placeholder="Email">                                        
-      </div>
-{{!-- ====================== Password ========================= --}}                    
-      <div style="margin-bottom: 25px" class="input-group">
-          <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-              <input id="signup-password" type="password" class="form-control" name="password" placeholder="Password">
-      </div>                                   
-{{!-- ====================== Profile Image ========================= --}}
-      <h4 for="avatar">Profile Image</h2>
-         <input id="avatar" type="file" name="avatar">
-         <br>
-            {{#if message }}
-               <div class="error-message">{{ message }}</div>
-            {{/if}}
-         <br>
-{{!-- ====================== Button ========================= --}}  
-      <div class="col-sm-12 controls">
-          <button id="btn-login" type="submit" class="btn btn-success">Create Account</button>
-      </div>
-{{!-- ====================== Route to Login Page ========================= --}}  
-      <div class="account-message">
-        <p> Do you already have an account? </p>
-           <a id="btn-login" href="/auth/login" class="btn btn-success"> Login </a>
-      </div>
+<div class="container">
+	<div id="loginbox" style="margin-top:50px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+		<div class="panel panel-info">
+			<div class="panel-heading">
+				<div class="panel-title">Sign Up</div>
+			</div>
+			{{!-- ====================== SPACING BETWEEN PANEL AND INPUTS h======================== --}}
+			<div style="padding-top:30px" class="panel-body">
+				<div style="display:none" id="form-container" class="alert alert-danger col-sm-12"></div>
+				<form class="auth-form" action="/auth/signup" method="POST" id="form-container" enctype="multipart/form-data">
+					{{!-- ====================== Username ========================= --}}
+					<div style="margin-bottom: 25px" class="input-group">
+						<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+						<input id="signup-username" type="text" class="form-control" name="username" value=""
+							placeholder="Username">
+					</div>
+					{{!-- ======================== Email ========================== --}}
+					<div style="margin-bottom: 25px" class="input-group">
+						<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+						<input id="signup-email" type="email" class="form-control" name="email" value="" placeholder="Email">
+					</div>
+					{{!-- ====================== Password ========================= --}}
+					<div style="margin-bottom: 25px" class="input-group">
+						<span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+						<input id="signup-password" type="password" class="form-control" name="password" placeholder="Password">
+					</div>
+					{{!-- ====================== Profile Image ========================= --}}
+					<h4 for="avatar">Profile Image</h2>
+						<input id="avatar" type="file" name="avatar">
+						<br>
+						{{#if message }}
+						<div class="error-message">{{ message }}</div>
+						{{/if}}
+						<br>
+						{{!-- ====================== Button ========================= --}}
+						<div class="col-sm-12 controls">
+							<button id="btn-login" type="submit" class="btn btn-success">Create Account</button>
+						</div>
+						{{!-- ====================== Route to Login Page ========================= --}}
+						<div class="account-message">
+							<p> Do you already have an account? </p>
+							<a id="btn-login" href="/auth/login" class="btn btn-success"> Login </a>
+						</div>
+			</div>
+			</form>
+		</div>
+	</div>
 </div>
-</form>     
-</div>                     
-</div>  
+
+
+{{!-- Michaela's Code --}}
+{{!-- <button>Create account</button>
+
+<p class="account-message">
+	Do you already have an account?
+	<a href="/auth/login">Login</a>
+</p>
+</form> --}}
+
+{{!-- <div class="container">
+	<div class="d-flex justify-content-center h-100">
+		<div class="card">
+			<div class="card-header">
+				<h3>Sign Up</h3>
+				<div class="d-flex justify-content-end social_icon">
+
+				</div>
+			</div>
+			<div class="card-body">
+				<form>
+					<div class="input-group form-group">
+						<div class="input-group-prepend">
+							<span class="input-group-text"><i class="fas fa-user"></i></span>
+						</div>
+						<input type="text" class="form-control" placeholder="username">
+
+					</div>
+					<div class="input-group form-group">
+						<div class="input-group-prepend">
+							<span class="input-group-text"><i class="fas fa-key"></i></span>
+						</div>
+						<input type="password" class="form-control" placeholder="password">
+					</div>
+					<div class="input-group form-group">
+						<div class="input-group-prepend">
+							<span class="input-group-text"><i class="fas fa-key"></i></span>
+						</div>
+						<input type="email" class="form-control" placeholder="jonsnow@nightguard.com">
+					</div>
+					<div class="input-group form-group">
+						<div class="input-group-prepend">
+							<span class="input-group-text"><i class="fas fa-key"></i></span>
+						</div>
+						<label for="avatar" class="form-control">Profile Image</label>
+						<input id="avatar" type="file" name="avatar">
+					</div>
+					{{!-- <div class="row align-items-center remember">
+						<input type="checkbox">Remember Me
+					</div> --}}
+					{{#if message }}
+					<div class="error-message">{{ message }}</div>
+					{{/if}}
+					<div class="form-group">
+						<input type="submit" value="Sign Up" class="btn float-right login_btn">
+					</div>
+				</form>
+			</div> --}}
+			{{!-- <div class="card-footer">
+				<div class="d-flex justify-content-center links">
+					Don't have an account?<a href="#">Sign Up</a>
+				</div>
+				<div class="d-flex justify-content-center">
+					<a href="#">Forgot your password?</a>
+				</div> --}}
+		{{!-- </div>
+	</div>
 </div>
-
-
-
+</div> --}}

@@ -1,5 +1,5 @@
 {{!-- If User is not logged in, display: --}}
-
+​
 {{#unless currentUser}}
 <a href="auth/login">Log In</a>
 <a href="auth/signup">Sign Up</a>
@@ -30,7 +30,7 @@
   </li>
 </ul>
 </article>
-
+​
 <form class="user-board" action="/boards/create" method="POST" id="form-container">
   <label for="title">Title</label>
   <input id="title" type="text" name="title" placeholder="Board Title Here...">
@@ -41,7 +41,7 @@
   <br><br>
   <button>Create Board</button>
 </form>
-
+​
 {{!-- Boards --}}
 <article>
   <div></div>
@@ -51,6 +51,5 @@
   <img src="{{meme}}" alt="" height="200" width="200"> 
 </ul>
 </article>
-
+​
 <script src="/javascripts/userProfile-DOM.js"></script>
-
