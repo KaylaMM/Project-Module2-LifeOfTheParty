@@ -27,16 +27,16 @@
 </head>
 
 <body class="{{bodyClass}}">
-  <nav id="nav-bar">
-    {{!-- here we separate the links into divs in order to use flexbox to space the links out to each end of the screen. (auth links to the far right and other links for the app in the far left) --}}
-    {{!-- <div> --}}
-    {{!-- <a href="/">Sign In</a> --}}
-    {{!-- <a href="/boards">My LOP Board</a> --}}
-    {{!-- </div> --}}
+  {{!-- <nav id="nav-bar"> --}}
+  {{!-- here we separate the links into divs in order to use flexbox to space the links out to each end of the screen. (auth links to the far right and other links for the app in the far left) --}}
+  {{!-- <div> --}}
+  {{!-- <a href="/">Sign In</a> --}}
+  {{!-- <a href="/boards">My LOP Board</a> --}}
+  {{!-- </div> --}}
 
-    {{!-- -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=NAV BAR=-=-=--=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- --}}
+  {{!-- -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=NAV BAR=-=-=--=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- --}}
 
-    {{!-- <div>
+  {{!-- <div>
       <a href="/">Home</a>
       <a href="/users/profile">Boards</a>
     </div>
@@ -51,34 +51,59 @@
       {{/if}}
     </div> --}}
 
-      <div>
-        <img
-          src="/Users/michaeladecamara/Ironhack/Module-2/Project-Module2-LifeOfTheParty/public/images/transparent-laughing-face-clipart-black-and-white-laughing.png"
-          width="150px" height="150px">
-
-        <a href="/">Home</a>
-        <a href="/users/profile">Boards</a>
-      </div>
-      <div>
-        {{#if currentUser}}
+  {{!-- <div>
+      <ul id="nav-bar" class="nav nav-pills nav-fill">
+        <li class="nav-item">
+          <a class="nav-link" href="/">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/users/profile">Boards</a>
+        </li>
+    </div>
+    <div>
+      {{#if currentUser}}
+      <li class="nav-item">
         <span>Hi, {{ currentUser.username }}</span>
-        <a href="/users/profile"><img src={{currentUser.avatar}} alt="avatar" width="100px"
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/users/profile"><img src={{currentUser.avatar}} alt="avatar" width="100px"
             height="100px"></a>
-        <a href="/auth/logout">Logout</a>
-        {{else}}
-        <a href="/auth/login">Login</a>
-        <a href="/auth/signup">Signup</a>
-        {{/if}}
-      </div>
-    </nav>
-    {{{body}}}
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-  </body>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/auth/logout">Logout</a>
+      </li>
+      {{else}}
+
+      <li class="nav-item">
+        <a class="nav-link" href="/auth/login">Login</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/auth/signup">Signup</a>
+      </li>
+      {{/if}}
+      </ul>
+    </div>
+  </nav> --}}
+
+
+
+
+
+
+
+
+
+
+
+  {{{body}}}
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</body>
+
 </html>
 
 
 
-  <script src="/javascripts/script.js"></script>
+<script src="/javascripts/script.js"></script>
 
 </body>
 

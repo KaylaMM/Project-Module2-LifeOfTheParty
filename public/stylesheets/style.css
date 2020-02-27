@@ -1,137 +1,22 @@
-body {
-  margin: 0;
-  padding: 5vw 5vw 0;
-  height: 87.2vh;
-}
-body #nav-bar{
+#nav-bar {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  position: fixed;
-  top: 0;
-  width: 90vw;
-  margin: 0 -5vw;
-  z-index: 9999;
-  position: fixed;
-  width: 100%;
-  padding: 10px;
-  top: 0;
-  background-color: rgb(177, 144, 179);
-  margin-bottom: 1vh;
- 
-}
-#nav-bar a{
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 2rem;
-  color: rgb(5, 84, 168);
-}
-
-
-
-body nav div {
-  width: fit-content;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-body nav div a {
-  margin: 0.3rem;
-  text-decoration: none;
-}
-
-body nav img {
-  height: 3.5rem;
-  width: 3.8rem;
-  margin: 0 0.5rem;
-}
-
-body form {
-  display: flex;
-  align-items: center;
-}
-
-body form.auth-form {
-  display: table-caption;
-  width: 12rem;
-}
-
-body .board__board-names {
-  display: flex;
-  align-items: center;
-}
-
-body .board__board-names a {
-  margin-right: 0.3rem;
-}
-
-body .messages__hr {
-  border: 0.4px solid mediumaquamarine;
-}
-
-body .messages__message-div {
-  border: 1px solid black;
-  border-bottom: 2px solid black;
-  padding-bottom: 0.5rem;
-  margin-bottom: 0.2rem;
-}
-
-body .user__profile {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-}
-
-body .user__profile img {
-  width: 15rem;
-}
-
-body .user__profile div {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-}
-
-body .user__profile form {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-}
-
-body .user__profile form input {
-  width: 11rem;
-}
-
-body .user__profile form .profile__name-input {
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  flex-direction: row;
-  width: 23rem;
-}
-
-body .user__profile form div.input-fields {
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  flex-direction: row;
-  width: 34rem;
 }
 
 /*# sourceMappingURL=style.css.map */
 
 @import url(//fonts.googleapis.com/css?family=Vibur);
-html,body{
-  height:100%
-}
+
+html,
 body {
-  background: #112 url(//images.weserv.nl/?url=i.imgur.com/6QJjYMe.jpg)  center no-repeat;
-  background-size:cover;
-  margin:0
+  height: 100%
 }
+
+body {
+  background: #112 url(//images.weserv.nl/?url=i.imgur.com/6QJjYMe.jpg) center no-repeat;
+  background-size: cover;
+  margin: 0
+}
+
 .logo {
   text-align: center;
   width: 65%;
@@ -142,48 +27,58 @@ body {
   left: 0;
   right: 0;
   bottom: 0;
-   user-select: none;
+  user-select: none;
 }
 
-.logo b{
+.logo b {
   font: 400 19vh "Vibur";
   color: #fee;
   text-shadow: 0 -40px 100px, 0 0 2px, 0 0 1em #ff4444, 0 0 0.5em #ff4444, 0 0 0.1em #ff4444, 0 10px 3px #000;
 }
-.logo b span{
+
+.logo b span {
   animation: blink linear infinite 2s;
 }
-.logo b span:nth-of-type(2){
+
+.logo b span:nth-of-type(2) {
   animation: blink linear infinite 3s;
 }
+
 @keyframes blink {
   78% {
     color: inherit;
     text-shadow: inherit;
   }
-  79%{
-     color: #333;
+
+  79% {
+    color: #333;
   }
+
   80% {
-    
+
     text-shadow: none;
   }
+
   81% {
     color: inherit;
     text-shadow: inherit;
   }
+
   82% {
     color: #333;
     text-shadow: none;
   }
+
   83% {
     color: inherit;
     text-shadow: inherit;
   }
+
   92% {
     color: #333;
     text-shadow: none;
   }
+
   92.5% {
     color: inherit;
     text-shadow: inherit;
