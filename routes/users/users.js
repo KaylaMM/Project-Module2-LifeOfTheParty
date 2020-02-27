@@ -55,7 +55,8 @@ router.post(
                 .catch(err => console.log(err));
         }
 });
-    
+
+// Route to open another users' profile
 router.get("/profile/:userId", (req, res, next) => {
     User.findById(req.params.userId)
         .then(userFromDB => {
@@ -64,6 +65,7 @@ router.get("/profile/:userId", (req, res, next) => {
         .catch(err => next(err));
 });
 
+// Route to delete user profile
 router.post('/profile/delete', (req, res, next) => {
     User.findByIdAndRemove(req.session.user._id)
     .then(() => {

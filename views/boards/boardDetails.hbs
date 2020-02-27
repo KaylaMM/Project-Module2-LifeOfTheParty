@@ -1,8 +1,21 @@
 <div id="board-details">
-  <h1>{{boardFromDB.title}}</h1>
-  <input type="hidden" id="boardTitle" value="{{boardFromDB.title}}">
-  <input type="hidden" id="boardId" value="{{boardFromDB._id}}">
+  <h1>{{this.title}}</h1>
+  <input type="hidden" id="boardTitle" value="{{this.title}}">
+  <input type="hidden" id="boardId" value="{{this._id}}">
   <button id="update-board-button">Update Board</button>
+</div>
+<div class="card-columns m-5">
+  {{#each memes}}
+    <div class="card p-4">
+      <img src="{{this.meme}}" class="card-img-top m-2" alt="meme">
+        <div class="m-3">
+          <form method="POST" action="/boards/remove-meme">
+            <input type="hidden" id="hiddenInput" value="{{this._id}}" name="memeId">
+            <button type="submit">Remove from board</button>
+          </form>
+        </div>
+    </div>
+  {{/each}}
 </div>
 
 <script src="/javascripts/board-DOM.js"></script>
