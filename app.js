@@ -100,5 +100,6 @@ app.use("/boards", require("./routes/boards/boards"));
 app.use("/messages", require("./routes/messages/message"));
 app.use("/replies", require("./routes/replies/replies"));
 app.use("/users", require("./routes/users/users"));
+app.use("/memes", require("./routes/memes/memes"));
 
 module.exports = app;
