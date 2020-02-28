@@ -7,21 +7,112 @@
 {{/unless}}
 
 
+
+				<!-- SIDEBAR USER AVATAR -->
+<div class="container">
+    <div class="row profile">
+		<div class="col-md-3">
+			<div class="profile-sidebar">
+				<!-- SIDEBAR USERPIC -->
+				<div class="profile-userpic">
+          <img id="user-avatar" src="{{currentUser.avatar}}" alt="user_avatar" height="200" width="200" class="img-responsive"> 
+				</div>
+				<!-- END SIDEBAR USER AVATAR -->
+
+
+
+				<!-- SIDEBAR USER TITLE -->
+				<div class="profile-usertitle">
+					<div class="profile-usertitle-name">
+						<p>Hey {{currentUser.username}} !</p>
+					</div>
+          <div>
+            <input type="hidden" id="hidden1" value="{{currentUser.username}}">
+            <input type="hidden" id="hidden2" value="{{currentUser.email}}">
+            <button id="update-button" class="btn btn-secondary btn-sm">Update Profile</button>
+          </div>
+				</div>
+				<!-- END SIDEBAR USER TITLE -->
+
+
+
+        <!-- FOLLOWERS -->
+        <div class="follow-class">
+          <p>Followers: {{currentUser.userFollowers.[{i}]}}</p>
+          <p>Following: {{currentUser.userFollowed.length}}</p>
+        </div>
+        <!-- END FOLLOWERS -->
+
+
+
+				<!-- SIDEBAR BUTTONS -->
+				<div class="profile-userbuttons">
+					<button type="button" class="btn btn-secondary btn-sm">Follow</button>
+					<button type="button" class="btn btn-secondary btn-sm">Message</button>
+				</div>
+				<!-- END SIDEBAR BUTTONS -->
+
+
+        
+			</div>
+		</div>
+
+
+
+         <!-- USER BOARDS TITLE -->
+		    <div class="col-md-9">
+            <div class="profile-content">
+              <p> {{#each currentUser.userBoards}} </p>
+              <button type="button" class="btn btn-secondary btn-sm" href="/boards/{{this._id}}"> {{this.title}} </button>
+              {{/each}}
+                <form class="user-board" action="/boards/create" method="POST" id="form-container">
+                  <label for="title">Title</label>
+                  <input id="title" type="text" name="title" placeholder="Board Title Here...">
+                  <br><br>
+                    {{#if message }}
+                      <div class="error-message">{{ message }}</div>
+                    {{/if}}
+                  <br><br>
+                  <button>Create Board</button>
+                </form>
+        </div>
+        <!-- USER BOARDS TITLE END -->
+
+
+
+        <!-- USER BOARDS -->
+        <div>
+           
+        </div>
+        <!-- USER BOARDS END -->
+
+
+
+		</div>
+	</div>
+</div>
+<br>
+<br>
+
+
+
+{{!-- OLD USER PROFILE --}}
+
 {{!-- User Info --}}
-<article>
+{{!-- <article>
   <img id="user-avatar" src="{{currentUser.avatar}}" alt="user_avatar" height="200" width="200"> 
-</article>
+</article> --}}
 <ul id="userDetails">
-  <li>Hey {{currentUser.username}} !</li>
-  <li>Email: {{currentUser.email}}</li>
-  <input type="hidden" id="hidden1" value="{{currentUser.username}}">
+  {{!-- <li>Hey {{currentUser.username}} !</li>
+  <li>Email: {{currentUser.email}}</li> --}}
+  {{!-- <input type="hidden" id="hidden1" value="{{currentUser.username}}">
   <input type="hidden" id="hidden2" value="{{currentUser.email}}">
   <button id="update-button">Update Profile</button>
-</ul>
+</ul> --}}
 <ul>
-  <li>Followers: {{currentUser.userFollowers.[{i}]}}</li>
-  <li>Following: {{currentUser.userFollowed.length}}</li>
-  <li>Boards:
+  {{!-- <li>Followers: {{currentUser.userFollowers.[{i}]}}</li>
+  <li>Following: {{currentUser.userFollowed.length}}</li> --}}
+  {{!-- <li>Boards:
     <ul>{{#each currentUser.userBoards}}
       <li>
         <a href="/boards/{{this._id}}"> {{this.title}}</a>
@@ -30,9 +121,9 @@
     </ul>
   </li>
 </ul>
-</article>
+</article> --}}
 ​
-<form class="user-board" action="/boards/create" method="POST" id="form-container">
+{{!-- <form class="user-board" action="/boards/create" method="POST" id="form-container">
   <label for="title">Title</label>
   <input id="title" type="text" name="title" placeholder="Board Title Here...">
   <br><br>
@@ -41,16 +132,16 @@
   {{/if}}
   <br><br>
   <button>Create Board</button>
-</form>
+</form> --}}
 ​
 {{!-- Boards --}}
-<article>
+{{!-- <article>
   <div></div>
   </div>
 <ul>
  <img src="{{meme}}" alt="" height="200" width="200"> 
   <img src="{{meme}}" alt="" height="200" width="200"> 
 </ul>
-</article>
+</article> --}}
 ​
 <script src="/javascripts/userProfile-DOM.js"></script>

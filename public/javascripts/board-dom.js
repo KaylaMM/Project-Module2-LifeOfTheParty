@@ -15,4 +15,18 @@ window.onload = () => {
           <button type="submit">Delete board</button>
         </form>`
     };
+
+  document.querySelector('#create-meme-button').onclick = () => {
+    document.getElementById('board-details').removeChild(document.getElementById('create-meme-button'));
+    const boardId = document.getElementById("boardId").value;
+    document.getElementById('board-details').innerHTML = `
+    <button id="update-board-button">Update Board</button>
+    <form class="auth-form" action="/memes/add-meme" method="POST" id="form-container" enctype="multipart/form-data">
+      <input type="hidden" id="hidden" value=${boardId} name="boardId">
+      <br>
+      <input id="newMeme" type="file" name="memeUrl">
+      <br>
+      <button type="submit">Create new meme</button>
+    </form>`;
+  }
 }
