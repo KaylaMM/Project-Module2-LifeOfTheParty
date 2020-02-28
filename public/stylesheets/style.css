@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 #nav-bar {
   display: flex;
 }
@@ -85,10 +84,3 @@ body {
     text-shadow: inherit;
   }
 }
-=======
-/* #nav-bar{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-} */
->>>>>>> da97dd8cc65e2b0bd6cc146f2b3c4cae455b9319
