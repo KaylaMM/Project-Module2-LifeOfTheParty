@@ -57,9 +57,21 @@
 		</div>
 
 
+<!-- USER BOARDS TITLE -->
+
+{{!-- create button in profile div 
+create a div with input in the middle
+make sure that newly added boards appear where you'd like them to --}}
+
+ <!-- USER BOARDS TITLE END -->
+
+
+
+
+
 
          <!-- USER BOARDS TITLE -->
-		    <div class="col-md-9">
+		    {{!-- <div class="col-md-9">
             <div class="profile-content">
               <p> {{#each currentUser.userBoards}} </p>
               <!-- EACH BOARD ITEM -->
@@ -67,7 +79,7 @@
                 <div class="row">
 						      <div class="col-12 col-sm-6 col-md-4 image-grid-item">
 							      <div style="background-image: " class="image-grid-cover">
-								    <a type="anchor" class="created-board" href="/boards"> {{this._id}}"> {{this.title}} </a>
+								    <a type="anchor" class="created-board" href="/boards"> {{this._id}}{{this.title}} </a>
 								    <input id="title" type="text" name="title"placeholder="Board Title Here...">
 							      </div>
 						      </div>
@@ -85,7 +97,7 @@
                   <br><br>
                   <button class="btn btn-secondary btn-sm">Create Board</button>
                 </form>
-        </div>
+        </div> --}}
         <!-- USER BOARDS TITLE END -->
 
 
