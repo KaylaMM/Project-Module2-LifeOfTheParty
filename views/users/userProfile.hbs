@@ -1,20 +1,20 @@
 {{!-- If User is not logged in, display: --}}
-​
 {{#unless currentUser}}
 <a href="auth/login">Log In</a>
 <a href="auth/signup">Sign Up</a>
 {{/unless}}
-
-
-
-				<!-- SIDEBAR USER AVATAR -->
+<!-- SIDEBAR USER AVATAR -->
 <div class="container">
     <div class="row profile">
 		<div class="col-md-3">
 			<div class="profile-sidebar">
 				<!-- SIDEBAR USERPIC -->
 				<div class="profile-userpic">
+<<<<<<< HEAD
           <img id="userpic" src="{{currentUser.avatar}}" alt="userpic" class="img-responsive"> 
+=======
+          <img id="user-avatar" src="{{currentUser.avatar}}" alt="user_avatar" height="200" width="200" class="img-responsive"> 
+>>>>>>> 767225ddfd8619587b1428e18abccf88ce3ef732
 				</div>
 				<!-- END SIDEBAR USER AVATAR -->
 
@@ -73,6 +73,7 @@ make sure that newly added boards appear where you'd like them to --}}
          <!-- USER BOARDS TITLE -->
 		    {{!-- <div class="col-md-9">
             <div class="profile-content">
+<<<<<<< HEAD
               <p> {{#each currentUser.userBoards}} </p>
               <!-- EACH BOARD ITEM -->
               <div class="container">
@@ -85,6 +86,10 @@ make sure that newly added boards appear where you'd like them to --}}
 						      </div>
                 </div>
               </div>
+=======
+              <p>{{#each currentUser.userBoards}}</p>
+              <a class="btn btn-secondary btn-sm" href="/boards/{{this._id}}">{{this.title}}</a>
+>>>>>>> 767225ddfd8619587b1428e18abccf88ce3ef732
               {{/each}}
               <!-- EACH BOARD ITEM END -->
                 <form class="user-board" action="/boards/create" method="POST" id="form-container">
