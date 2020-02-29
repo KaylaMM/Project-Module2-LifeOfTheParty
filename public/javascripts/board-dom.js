@@ -18,8 +18,10 @@ window.onload = () => {
 
   document.querySelector('#create-meme-button').onclick = () => {
     document.getElementById('board-details').removeChild(document.getElementById('create-meme-button'));
+    const boardTitle = document.getElementById("boardTitle").value;
     const boardId = document.getElementById("boardId").value;
     document.getElementById('board-details').innerHTML = `
+    <h1>${boardTitle}</h1>
     <button id="update-board-button">Update Board</button>
     <form class="auth-form" action="/memes/add-meme" method="POST" id="form-container" enctype="multipart/form-data">
       <input type="hidden" id="hidden" value=${boardId} name="boardId">
