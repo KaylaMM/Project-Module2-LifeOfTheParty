@@ -7,20 +7,31 @@
   
   /* Profile sidebar */
   .profile-sidebar {
-    padding: 20px 0 10px 0;
-    background:black;
-    height: ]400px;
-    /* opacity: 0.5; */
+    padding: 30px 0px 20px 0px;
+    left: 13px;
+    background: black;
+    border-radius: 10px;
+    width: 25vw;
+    height: 400px;
+    /* min-height: 460px; */
+    opacity: 0.7;
+    position: fixed;
   }
   
-  .profile-userpic img {
-    float: none;
-    margin: 0 auto;
-    width: 50%;
-    height: 50%;
-    -webkit-border-radius: 50% !important;
-    -moz-border-radius: 50% !important;
+  .profile-userpic {
+    margin: -3px auto;
+    width: 10vw;
+    height: 10vw;
+    /* -webkit-border-radius: 50% !important; */
+    /* -moz-border-radius: 50% !important; */
     border-radius: 50% !important;
+  }
+
+  #userpic{
+     -webkit-border-radius: 50% !important;
+     -moz-border-radius: 50% !important;
+     width: 10vw;
+     height: 10vw;
   }
   
   .profile-usertitle {
@@ -31,10 +42,9 @@
   .profile-usertitle-name {
     color:white;
     font: impact;
-    text-transform: uppercase;
     font-size: 16px;
     font-weight: 600;
-    margin-bottom: 7px;
+    margin-bottom: 5px;
   }
   
   .profile-userbuttons {
@@ -53,50 +63,30 @@
   .profile-userbuttons .btn:last-child {
     margin-right: 0px;
   }
+
+  #update-button{
+    margin: 1px;
+  }
+
+  .follow-class{
+    color: white;
+    font: impact;
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    text-align: center;
+    border-spacing: 10px;
+  }
       
-  .profile-usermenu {
-    margin-top: 30px;
-  }
-  
-  .profile-usermenu ul li {
-    border-bottom: 1px solid #f0f4f7;
-  }
-  
-  .profile-usermenu ul li:last-child {
-    border-bottom: none;
-  }
-  
-  .profile-usermenu ul li a {
-    color: #93a3b5;
-    font-size: 14px;
-    font-weight: 400;
-  }
-  
-  .profile-usermenu ul li a i {
-    margin-right: 8px;
-    font-size: 14px;
-  }
-  
-  .profile-usermenu ul li a:hover {
-    background-color: #fafcfd;
-    color: #5b9bd1;
-  }
-  
-  .profile-usermenu ul li.active {
-    border-bottom: none;
-  }
-  
-  .profile-usermenu ul li.active a {
-    color: #5b9bd1;
-    background-color: #f6f9fb;
-    border-left: 2px solid #5b9bd1;
-    margin-left: -2px;
-  }
   
   /* Profile Content */
   .profile-content {
-    padding: 20px;
-    background: rgb(141, 132, 132);
-    /* opacity: 0.5; */
-    min-height: 460px;
+    width: 71vw;
+    padding: 3vw;
+    background: black;
+    border-radius: 1vw;
+    opacity: 0.7;
+    height: 150vw;
+    position: relative;
+    left: -4vw;
   }
