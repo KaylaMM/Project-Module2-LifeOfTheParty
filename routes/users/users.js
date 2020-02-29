@@ -25,9 +25,17 @@ router.get("/profile", (req, res, next) => {
 router.get("/profile/:userId", (req, res, next) => {
   User.findById(req.params.userId)
     .populate("userBoards")
+    .populate("userFollower")
+    .populate("userFollowing")
     .then(userFromDB => {
-      console.log(userFromDB);
-      res.render("users/otherUserProfile", {userFromDB});
+      console.log("req.session.user ===> ", req.session.user);
+      let followers = userFromDB.userFollower.find(userFollower => {
+        return userFollower._id + "" === req.session.user._id + "";
+      })
+        ? true
+        : false;
+      console.log("[][][][]", followers);
+      res.render("users/otherUserProfile", { userFromDB });
     })
     .catch(err => console.log(err));
 });
@@ -87,9 +95,28 @@ router.post("/profile/delete", (req, res, next) => {
     });
 });
 
-// Route to add the follower
-router.post("/follow/:userId", (req, res, next) => {
-    User.findByIdAndUpdate(req.params.userId, {$push: {"userFollower": }})
+//Route to add the follower
+router.post("/follow", (req, res, next) => {
+  console.log("req.body ===> ", req.body);
+  User.findByIdAndUpdate(
+    req.body.otherUserId,
+    { $push: { userFollower: req.body.currentUserId } },
+    { new: true }
+  )
+    .then(updatedUser => {
+      console.log("updatedUser ===>", updatedUser);
+      User.findByIdAndUpdate(
+        req.body.currentUserId,
+        { $push: { userFollowing: req.body.otherUserId } },
+        { new: true }
+      )
+        .then(updatedCurrentUser => {
+          console.log("updatedCurrentUser ===>", updatedCurrentUser);
+          res.redirect("back");
+        })
+        .catch(err => console.log(err));
+    })
+    .catch(err => console.log(err));
 });
 
 //Temporary route to display all users

@@ -41,8 +41,8 @@
         <div class="profile-userbuttons">
           <form action="/users/follow" method="POST">
             <input type="hidden" name="otherUserId" value="{{userFromDB._id}}">
-            <input type="hidden" name="currenUserId" value="{{currentUserFromDB._id}}">
-            <a href="/users/follow/{{userFromDB._id}}" class="btn btn-secondary btn-sm">Follow</a>
+            <input type="hidden" name="currentUserId" value="{{currentUser._id}}">
+            <button class="btn btn-secondary btn-sm" type="submit">Follow</button>
           </form>
           <button type="button" class="btn btn-secondary btn-sm">Message</button>
         </div>
