@@ -47,6 +47,11 @@ app.use(
 );
 app.use(cookieParser());
 
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 37f6d00488ffcb23b8bd42887c48a9454f4809ea
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "hbs");
 app.use(express.static(path.join(__dirname, "public")));
@@ -92,5 +97,6 @@ app.use("/messages", require("./routes/messages/message"));
 app.use("/replies", require("./routes/replies/replies"));
 app.use("/users", require("./routes/users/users"));
 app.use("/memes", require("./routes/memes/memes"));
+// app.use("/follows", require("./routes/follows/follow"));
 
 module.exports = app;
