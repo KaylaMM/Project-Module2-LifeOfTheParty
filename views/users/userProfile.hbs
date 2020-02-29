@@ -1,6 +1,5 @@
 {{!-- If User is not logged in, display: --}}
 ​
-
 {{#unless currentUser}}
 <a href="auth/login">Log In</a>
 <a href="auth/signup">Sign Up</a>
@@ -15,7 +14,7 @@
 			<div class="profile-sidebar">
 				<!-- SIDEBAR USERPIC -->
 				<div class="profile-userpic">
-          <img id="user-avatar" src="{{currentUser.avatar}}" alt="user_avatar" height="200" width="200" class="img-responsive"> 
+          <img id="user-avatar" src="{{currentUser.avatar}}" alt="user_avatar" class="img-responsive"> 
 				</div>
 				<!-- END SIDEBAR USER AVATAR -->
 
