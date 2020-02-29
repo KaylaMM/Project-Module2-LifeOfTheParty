@@ -1,0 +1,92 @@
+{{#if userFromDB}}
+<!-- SIDEBAR USER AVATAR -->
+<div class="container">
+  <div class="row profile">
+    <div class="col-md-3">
+      <div class="profile-sidebar">
+        <!-- SIDEBAR USERPIC -->
+        <div class="profile-userpic">
+          <img id="user-avatar" src="{{userFromDB.avatar}}" alt="user_avatar" height="200" width="200"
+            class="img-responsive">
+        </div>
+        <!-- END SIDEBAR USER AVATAR -->
+
+
+
+        <!-- SIDEBAR USER TITLE -->
+        <div class="profile-usertitle">
+          <div class="profile-usertitle-name">
+            <p>Hey {{userFromDB.username}} !</p>
+          </div>
+          <div>
+            <input type="hidden" id="hidden1" value="{{userFromDB.username}}">
+            <input type="hidden" id="hidden2" value="{{userFromDB.email}}">
+            <button id="update-button" class="btn btn-secondary btn-sm">Update Profile</button>
+          </div>
+        </div>
+        <!-- END SIDEBAR USER TITLE -->
+
+
+
+        <!-- FOLLOWERS -->
+        <div class="follow-class">
+          <p>Followers: {{userFromDB.userFollowers.[{i}]}}</p>
+          <p>Following: {{userFromDB.userFollowed.length}}</p>
+        </div>
+        <!-- END FOLLOWERS -->
+
+
+
+        <!-- SIDEBAR BUTTONS -->
+        <div class="profile-userbuttons">
+          <form action="/users/follow" method="POST">
+            <input type="hidden" name="otherUserId" value="{{userFromDB._id}}">
+            <input type="hidden" name="currentUserId" value="{{currentUser._id}}">
+            <button class="btn btn-secondary btn-sm" type="submit">Follow</button>
+          </form>
+          <button type="button" class="btn btn-secondary btn-sm">Message</button>
+        </div>
+        <!-- END SIDEBAR BUTTONS -->
+
+
+
+      </div>
+    </div>
+
+
+
+    <!-- USER BOARDS TITLE -->
+    <div class="col-md-9">
+      <div class="profile-content">
+        <p> {{#each userFromDB.userBoards}} </p>
+        <button type="button" class="btn btn-secondary btn-sm" href="/boards/{{this._id}}"> {{this.title}} </button>
+        {{/each}}
+        <form class="user-board" action="/boards/create" method="POST" id="form-container">
+          <label for="title">Title</label>
+          <input id="title" type="text" name="title" placeholder="Board Title Here...">
+          <br><br>
+          {{#if message }}
+          <div class="error-message">{{ message }}</div>
+          {{/if}}
+          <br><br>
+          <button>Create Board</button>
+        </form>
+      </div>
+      <!-- USER BOARDS TITLE END -->
+
+
+
+      <!-- USER BOARDS -->
+      <div>
+
+      </div>
+      <!-- USER BOARDS END -->
+
+
+
+    </div>
+  </div>
+</div>
+<br>
+<br>
+{{/if}}
