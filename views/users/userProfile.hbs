@@ -1,20 +1,16 @@
 {{!-- If User is not logged in, display: --}}
-​
 {{#unless currentUser}}
 <a href="auth/login">Log In</a>
 <a href="auth/signup">Sign Up</a>
 {{/unless}}
-
-
-
-				<!-- SIDEBAR USER AVATAR -->
+<!-- SIDEBAR USER AVATAR -->
 <div class="container">
     <div class="row profile">
 		<div class="col-md-3">
 			<div class="profile-sidebar">
 				<!-- SIDEBAR USERPIC -->
 				<div class="profile-userpic">
-          <img id="user-avatar" src="{{currentUser.avatar}}" alt="user_avatar" class="img-responsive"> 
+          <img id="user-avatar" src="{{currentUser.avatar}}" alt="user_avatar" height="200" width="200" class="img-responsive"> 
 				</div>
 				<!-- END SIDEBAR USER AVATAR -->
 
@@ -61,8 +57,8 @@
          <!-- USER BOARDS TITLE -->
 		    <div class="col-md-9">
             <div class="profile-content">
-              <p> {{#each currentUser.userBoards}} </p>
-              <button type="button" class="btn btn-secondary btn-sm" href="/boards/{{this._id}}"> {{this.title}} </button>
+              <p>{{#each currentUser.userBoards}}</p>
+              <a class="btn btn-secondary btn-sm" href="/boards/{{this._id}}">{{this.title}}</a>
               {{/each}}
                 <form class="user-board" action="/boards/create" method="POST" id="form-container">
                   <label for="title">Title</label>
