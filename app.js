@@ -47,14 +47,7 @@ app.use(
 );
 app.use(cookieParser());
 
-// Express View engine setup
-// app.use(
-//     require("node-sass-middleware")({
-//         src: path.join(__dirname, "public"),
-//         dest: path.join(__dirname, "public"),
-//         sourceMap: true
-//     })
-// );
+
 
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "hbs");
@@ -101,5 +94,6 @@ app.use("/messages", require("./routes/messages/message"));
 app.use("/replies", require("./routes/replies/replies"));
 app.use("/users", require("./routes/users/users"));
 app.use("/memes", require("./routes/memes/memes"));
+// app.use("/follows", require("./routes/follows/follow"));
 
 module.exports = app;
