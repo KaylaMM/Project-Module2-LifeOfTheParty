@@ -47,8 +47,6 @@ app.use(
 );
 app.use(cookieParser());
 
-
-
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "hbs");
 app.use(express.static(path.join(__dirname, "public")));
@@ -94,6 +92,5 @@ app.use("/messages", require("./routes/messages/message"));
 app.use("/replies", require("./routes/replies/replies"));
 app.use("/users", require("./routes/users/users"));
 app.use("/memes", require("./routes/memes/memes"));
-// app.use("/follows", require("./routes/follows/follow"));
 
 module.exports = app;

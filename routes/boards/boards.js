@@ -25,15 +25,14 @@ router.post("/create", (req, res, next) => {
   newBoard.author = req.session.user._id;
   Board.create(newBoard)
     .then(newlyCreatedBoard => {
-      console.log(newlyCreatedBoard);
       User.findByIdAndUpdate(
         req.session.user._id,
         {$push: { userBoards: newlyCreatedBoard._id}},
         {new: true}
       )
         .then(updatedUser => {
-          console.log(">>>>", req.session.user, updatedUser.userBoards);
           req.session.user = updatedUser;
+          res.locals.currentUser = req.session.user;
           res.redirect(`/users/profile`);
         })
         .catch(err => next(err));

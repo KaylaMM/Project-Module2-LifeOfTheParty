@@ -25,17 +25,20 @@ router.get("/profile", (req, res, next) => {
 router.get("/profile/:userId", (req, res, next) => {
   User.findById(req.params.userId)
     .populate("userBoards")
-    .populate("userFollower")
-    .populate("userFollowing")
+    .populate("followers")
+    .populate("following")
     .then(userFromDB => {
       console.log("req.session.user ===> ", req.session.user);
-      let followers = userFromDB.userFollower.find(userFollower => {
-        return userFollower._id + "" === req.session.user._id + "";
+      let isFollowing = userFromDB.followers.find(follower => {
+        return follower._id + "" === req.session.user._id + "";
       })
         ? true
         : false;
-      console.log("[][][][]", followers);
-      res.render("users/otherUserProfile", { userFromDB });
+        if (isFollowing) {
+          res.render("users/otherUserProfile", { userFromDB, message: "User already followed." });
+        } else {
+          res.render("users/otherUserProfile", { userFromDB });
+        }
     })
     .catch(err => console.log(err));
 });
@@ -100,18 +103,40 @@ router.post("/follow", (req, res, next) => {
   console.log("req.body ===> ", req.body);
   User.findByIdAndUpdate(
     req.body.otherUserId,
-    { $push: { userFollower: req.body.currentUserId } },
+    { $push: { followers: req.body.currentUserId } },
     { new: true }
   )
     .then(updatedUser => {
       console.log("updatedUser ===>", updatedUser);
       User.findByIdAndUpdate(
         req.body.currentUserId,
-        { $push: { userFollowing: req.body.otherUserId } },
+        { $push: { following: req.body.otherUserId } },
         { new: true }
       )
-        .then(updatedCurrentUser => {
-          console.log("updatedCurrentUser ===>", updatedCurrentUser);
+        .then(() => {
+          res.redirect("back");
+        })
+        .catch(err => console.log(err));
+    })
+    .catch(err => console.log(err));
+});
+
+//Route to remove the follower
+router.post("/unfollow", (req, res, next) => {
+  console.log("req.body ===> ", req.body);
+  User.findByIdAndUpdate(
+    req.body.otherUserId,
+    { $pull: { followers: req.body.currentUserId } },
+    { new: true }
+  )
+    .then(updatedUser => {
+      console.log("updatedUser ===>", updatedUser);
+      User.findByIdAndUpdate(
+        req.body.currentUserId,
+        { $pull: { following: req.body.otherUserId } },
+        { new: true }
+      )
+        .then(() => {
           res.redirect("back");
         })
         .catch(err => console.log(err));

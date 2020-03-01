@@ -6,8 +6,8 @@
       <div class="profile-sidebar">
         <!-- SIDEBAR USERPIC -->
         <div class="profile-userpic">
-          <img id="user-avatar" src="{{userFromDB.avatar}}" alt="user_avatar" height="200" width="200"
-            class="img-responsive">
+        <div class="profile-userpic">
+          <img id="userpic" src="{{userFromDB.avatar}}" alt="userpic" class="img-responsive">
         </div>
         <!-- END SIDEBAR USER AVATAR -->
 
@@ -30,62 +30,60 @@
 
         <!-- FOLLOWERS -->
         <div class="follow-class">
-          <p>Followers: {{userFromDB.userFollowers.[{i}]}}</p>
-          <p>Following: {{userFromDB.userFollowed.length}}</p>
+          <p>Followers: {{userFromDB.followers.length}}</p>
+          <p>Following: {{userFromDB.following.length}}</p>
         </div>
         <!-- END FOLLOWERS -->
 
-
-
         <!-- SIDEBAR BUTTONS -->
         <div class="profile-userbuttons">
-          <form action="/users/follow" method="POST">
-            <input type="hidden" name="otherUserId" value="{{userFromDB._id}}">
-            <input type="hidden" name="currentUserId" value="{{currentUser._id}}">
-            <button class="btn btn-secondary btn-sm" type="submit">Follow</button>
+          {{#if message}}
+            <form action="/users/unfollow" method="POST">
+              <input type="hidden" name="otherUserId" value="{{userFromDB._id}}">
+              <input type="hidden" name="currentUserId" value="{{currentUser._id}}">
+              <button class="btn btn-secondary btn-sm" type="submit">Unfollow</button>
+          {{else}}
+            <form action="/users/follow" method="POST">
+              <input type="hidden" name="otherUserId" value="{{userFromDB._id}}">
+              <input type="hidden" name="currentUserId" value="{{currentUser._id}}">
+              <button class="btn btn-secondary btn-sm" type="submit">Follow</button>
+          {{/if}}
           </form>
           <button type="button" class="btn btn-secondary btn-sm">Message</button>
         </div>
         <!-- END SIDEBAR BUTTONS -->
-
-
-
       </div>
     </div>
 
 
 
     <!-- USER BOARDS TITLE -->
-    <div class="col-md-9">
+    <div class="col-md-9" style="margin-left: 250px;">
       <div class="profile-content">
-        <p> {{#each userFromDB.userBoards}} </p>
-        <button type="button" class="btn btn-secondary btn-sm" href="/boards/{{this._id}}"> {{this.title}} </button>
+        {{#each userFromDB.userBoards}}
+        <!-- EACH BOARD ITEM -->
+        <div class="container">
+          <div class="row">
+            <div class="col-3 col-sm-3 col-md-3 image-grid-item" >
+              <div style="background-image: " class="image-grid-cover">
+                {{!-- -=-=-=-=-=-=-=--=-=-=-=-=-=-=-=-=-=- --}}
+                <a type="anchor" class="created-board" href="/boards/{{this._id}}">{{this.title}}</a>
+                {{!-- -=-=-=-=-=-=-=--=-=-=-=-=-=-=-=-=-=- --}}
+              </div>
+            </div>
+          </div>
+        </div>
         {{/each}}
+        <!-- EACH BOARD ITEM END -->
         <form class="user-board" action="/boards/create" method="POST" id="form-container">
-          <label for="title">Title</label>
+          <br><br>
           <input id="title" type="text" name="title" placeholder="Board Title Here...">
           <br><br>
-          {{#if message }}
-          <div class="error-message">{{ message }}</div>
-          {{/if}}
-          <br><br>
-          <button>Create Board</button>
+          <button class="btn btn-secondary btn-sm">Create Board</button>
         </form>
       </div>
       <!-- USER BOARDS TITLE END -->
-
-
-
-      <!-- USER BOARDS -->
-      <div>
-
-      </div>
-      <!-- USER BOARDS END -->
-
-
-
     </div>
-  </div>
 </div>
 <br>
 <br>

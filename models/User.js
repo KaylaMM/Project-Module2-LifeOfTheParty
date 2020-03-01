@@ -57,7 +57,7 @@ const userSchema = new Schema(
       ]
     },
     // Users follow by current user
-    userFollower: {
+    followers: {
       type: [
         {
           type: Schema.Types.ObjectId,
@@ -66,7 +66,7 @@ const userSchema = new Schema(
       ]
     },
     // Users followed by current user
-    userFollowing: {
+    following: {
       type: [
         {
           type: Schema.Types.ObjectId,
