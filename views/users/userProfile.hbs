@@ -5,33 +5,29 @@
 {{/unless}}
 <!-- SIDEBAR USER AVATAR -->
 <div class="container">
-    <div class="row profile">
-		<div class="col-md-3">
-			<div class="profile-sidebar">
-				<!-- SIDEBAR USERPIC -->
-				<div class="profile-userpic">
-<<<<<<< HEAD
-          <img id="userpic" src="{{currentUser.avatar}}" alt="userpic" class="img-responsive"> 
-=======
-          <img id="user-avatar" src="{{currentUser.avatar}}" alt="user_avatar" height="200" width="200" class="img-responsive"> 
->>>>>>> 767225ddfd8619587b1428e18abccf88ce3ef732
-				</div>
-				<!-- END SIDEBAR USER AVATAR -->
+  <div class="row profile">
+    <div class="col-md-3">
+      <div class="profile-sidebar">
+        <!-- SIDEBAR USERPIC -->
+        <div class="profile-userpic">
+          <img id="userpic" src="{{currentUser.avatar}}" alt="userpic" class="img-responsive">
+        </div>
+        <!-- END SIDEBAR USER AVATAR -->
 
 
 
-				<!-- SIDEBAR USER TITLE -->
-				<div class="profile-usertitle">
-					<div class="profile-usertitle-name">
-						<p>Hey {{currentUser.username}} !</p>
-					</div>
+        <!-- SIDEBAR USER TITLE -->
+        <div class="profile-usertitle">
+          <div class="profile-usertitle-name">
+            <p>Hey {{currentUser.username}} !</p>
+          </div>
           <div>
             <input type="hidden" id="hidden1" value="{{currentUser.username}}">
             <input type="hidden" id="hidden2" value="{{currentUser.email}}">
             <button id="update-button" class="btn btn-secondary btn-sm">Update Profile</button>
           </div>
-				</div>
-				<!-- END SIDEBAR USER TITLE -->
+        </div>
+        <!-- END SIDEBAR USER TITLE -->
 
 
 
@@ -44,70 +40,77 @@
 
 
 
-				<!-- SIDEBAR BUTTONS -->
-				<div class="profile-userbuttons">
-					<a href="/users/follow/{{currentUser._id}}" class="btn btn-secondary btn-sm">Follow</a>
-					<button type="button" class="btn btn-secondary btn-sm">Message</button>
-				</div>
-				<!-- END SIDEBAR BUTTONS -->
+        <!-- SIDEBAR BUTTONS -->
+        <div class="profile-userbuttons">
+          <a href="/users/follow/{{currentUser._id}}" class="btn btn-secondary btn-sm">Follow</a>
+          <button type="button" class="btn btn-secondary btn-sm">Message</button>
+        </div>
+        <!-- END SIDEBAR BUTTONS -->
 
 
-        
-			</div>
-		</div>
+      </div>
+    </div>
 
 
-<!-- USER BOARDS TITLE -->
+    <!-- NEW USER BOARDS TITLE -->
 
-{{!-- create button in profile div 
+    {{!-- create button in profile div 
 create a div with input in the middle
 make sure that newly added boards appear where you'd like them to --}}
 
- <!-- USER BOARDS TITLE END -->
+    {{!-- <div class="col-md-9" id="profile-content">
+      <div class="col-md-9">
+        <div class="col-md-3">
 
+        </div>
+        <div class="col-md-3">
 
+        </div>
+        <div class="col-md-3">
 
+        </div>
+      </div>
+    </div> --}}
 
+    <!-- NEW USER BOARDS TITLE END -->
 
+    <!-- USER BOARDS TITLE -->
+    <div class="col-md-9">
+      <div class="profile-content">
+        <p> {{#each currentUser.userBoards}} </p>
+        <!-- EACH BOARD ITEM -->
+        <div class="container">
+          <div class="row">
+            <div class="col-3 col-sm-3 col-md-3 image-grid-item">
+              <div style="background-image: " class="image-grid-cover">
+                {{!-- -=-=-=-=-=-=-=--=-=-=-=-=-=-=-=-=-=- --}}
 
-         <!-- USER BOARDS TITLE -->
-		    {{!-- <div class="col-md-9">
-            <div class="profile-content">
-<<<<<<< HEAD
-              <p> {{#each currentUser.userBoards}} </p>
-              <!-- EACH BOARD ITEM -->
-              <div class="container">
-                <div class="row">
-						      <div class="col-12 col-sm-6 col-md-4 image-grid-item">
-							      <div style="background-image: " class="image-grid-cover">
-								    <a type="anchor" class="created-board" href="/boards"> {{this._id}}{{this.title}} </a>
-								    <input id="title" type="text" name="title"placeholder="Board Title Here...">
-							      </div>
-						      </div>
-                </div>
+                <a type="anchor" class="created-board" href="/boards"> {{this._id}}{{this.title}} </a>
+                <input id="title" type="text" name="title" placeholder="Board Title Here...">
+
+                {{!-- -=-=-=-=-=-=-=--=-=-=-=-=-=-=-=-=-=- --}}
               </div>
-=======
-              <p>{{#each currentUser.userBoards}}</p>
-              <a class="btn btn-secondary btn-sm" href="/boards/{{this._id}}">{{this.title}}</a>
->>>>>>> 767225ddfd8619587b1428e18abccf88ce3ef732
-              {{/each}}
-              <!-- EACH BOARD ITEM END -->
-                <form class="user-board" action="/boards/create" method="POST" id="form-container">
-                  <label for="title">Title</label>
-                  
-                  <br><br>
-                    {{#if message }}
-                      <div class="error-message">{{ message }}</div>
-                    {{/if}}
-                  <br><br>
-                  <button class="btn btn-secondary btn-sm">Create Board</button>
-                </form>
-        </div> --}}
-        <!-- USER BOARDS TITLE END -->
+            </div>
+          </div>
+        </div>
+        {{/each}}
+        <!-- EACH BOARD ITEM END -->
+        <form class="user-board" action="/boards/create" method="POST" id="form-container">
 
 
-		</div>
-	</div>
+          <br><br>
+          {{#if message }}
+          <div class="error-message">{{ message }}</div>
+          {{/if}}
+          <br><br>
+          {{!-- <button class="btn btn-secondary btn-sm">Create Board</button> --}}
+        </form>
+      </div>
+      <!-- USER BOARDS TITLE END -->
+
+
+    </div>
+  </div>
 </div>
 <br>
 <br>
