@@ -92,6 +92,5 @@ app.use("/messages", require("./routes/messages/message"));
 app.use("/replies", require("./routes/replies/replies"));
 app.use("/users", require("./routes/users/users"));
 app.use("/memes", require("./routes/memes/memes"));
-// app.use("/follows", require("./routes/follows/follow"));
 
 module.exports = app;
