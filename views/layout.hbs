@@ -18,6 +18,35 @@
   <link href="/stylesheets/userprofile.css" rel="stylesheet" id="bootstrap-css">
 </head>
 <body>
+    <nav class="navbar navbar-inverse">
+      <div class="container-fluid">
+          <div class="navbar-header">
+              <a class="navbar-brand" href="/"><b>U-meme</b></a>
+          </div>
+          {{#if currentUser}}
+          <form class="auth-form" action="/users/search" method="GET" id="form-container">
+          <div class="card-body row no-gutters align-items-center">
+            <div class="col">
+              <input class="form-control form-control-lg form-control-borderless" name="username" type="text" placeholder="Search for users" />
+            </div>
+            <div class="col-auto">
+              <button class="btn btn-primary btn-lg" type="submit">Search</button>
+            </div>
+          </div>
+        </form>
+          <ul class="nav navbar-nav"></ul>
+          <a class="active" href="/users/profile">Profile</a>
+          <span>Hi, {{ currentUser.username }}</span>
+          <a class="active" href="/users/profile"><img src={{currentUser.avatar}} alt="avatar" width="100px"
+                  height="100px"></a>
+          <a href="/auth/logout">Logout</a>
+          {{else}}
+          <a href="auth/login">Login</a>
+          <a href="auth/signup">Signup</a>
+          </ul>
+      </div>
+    {{/if}}
+  </nav>
   {{{body}}}
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"

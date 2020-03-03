@@ -10,10 +10,22 @@
   background: black;
   border-radius: 10px;
   width: 25vw;
-  height: 400px;
+  height: auto;
   /* min-height: 460px; */
   opacity: 0.7;
   position: fixed;
+}
+
+/* Profile sidebar on allUsers*/
+.profile-sidebar-all-users {
+  padding: 30px 0px 20px 0px;
+  left: 13px;
+  background: black;
+  border-radius: 10px;
+  width: 25vw;
+  height: 300px;
+  opacity: 0.7;
+  position: relative;
 }
 
 .profile-userpic {
@@ -87,4 +99,11 @@
   height: 80vw;
   position: relative;
   left: -4vw;
+}
+
+#container-all-users {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
 }
