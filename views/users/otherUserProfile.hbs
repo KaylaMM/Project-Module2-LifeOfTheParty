@@ -40,7 +40,6 @@
               <input type="hidden" name="otherUserId" value="{{userFromDB._id}}">
               <input type="hidden" name="currentUserId" value="{{currentUser._id}}">
               <button class="btn btn-secondary btn-sm" type="submit">Unfollow</button>
-<<<<<<< HEAD
               {{else}}
               <form action="/users/follow" method="POST">
                 <input type="hidden" name="otherUserId" value="{{userFromDB._id}}">
@@ -49,15 +48,6 @@
                 {{/if}}
               </form>
           </div>
-=======
-          {{else}}
-            <form action="/users/follow" method="POST">
-              <input type="hidden" name="otherUserId" value="{{userFromDB._id}}">
-              <input type="hidden" name="currentUserId" value="{{currentUser._id}}">
-              <button class="btn btn-secondary btn-sm" type="submit">Follow</button>
-          {{/if}}
-          </form>
->>>>>>> 083a8cc466fdb8923fcf9bafa0141b604c37310f
         </div>
 
 
