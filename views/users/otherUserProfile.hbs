@@ -43,6 +43,7 @@
               <input type="hidden" name="otherUserId" value="{{userFromDB._id}}">
               <input type="hidden" name="currentUserId" value="{{currentUser._id}}">
               <button class="btn btn-secondary btn-sm" type="submit">Unfollow</button>
+<<<<<<< HEAD
               {{else}}
               <form action="/users/follow" method="POST">
                 <input type="hidden" name="otherUserId" value="{{userFromDB._id}}">
@@ -53,6 +54,15 @@
               {{!-- <button type="button" class="btn btn-secondary btn-sm">Message</button> --}}
           </div>
           <!-- END SIDEBAR BUTTONS -->
+=======
+          {{else}}
+            <form action="/users/follow" method="POST">
+              <input type="hidden" name="otherUserId" value="{{userFromDB._id}}">
+              <input type="hidden" name="currentUserId" value="{{currentUser._id}}">
+              <button class="btn btn-secondary btn-sm" type="submit">Follow</button>
+          {{/if}}
+          </form>
+>>>>>>> cef345c08b937390fea8e921d42b59e09e0a03da
         </div>
       </div>
 
