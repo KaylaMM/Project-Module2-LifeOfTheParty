@@ -6,9 +6,7 @@ const uploadCloud = require("../../config/cloudinary-setup");
 
 // Route to display all users
 router.get("/search", (req, res, next) => {
-  console.log("dsdsadsasad", req.query);
   let searchRegEx = new RegExp(req.query.username, 'ig');
-  console.log(typeof searchRegEx);
   User.find({username: searchRegEx })
     .then(usersFromDB => {
       res.render("users/allUsers", { usersFromDB });
@@ -16,19 +14,20 @@ router.get("/search", (req, res, next) => {
     .catch(err => console.log(err));
 });
 
-// Route to open user profile
-router.get("/profile/details", (req, res, next) => {
-  res.render("users/userProfile");
-});
-
 // Route to userProfile details
 router.get("/profile", (req, res, next) => {
   User.findById(req.session.user._id)
-    .populate("userBoards")
+    .populate({
+      path: "userBoards",
+      model: "Board",
+      populate: {
+        path: "memes",
+        model: "Memes"
+      }})
     .then(userFound => {
-      console.log({ userFound, boards: userFound.userBoards });
+      console.log(userFound.userBoards);
       req.session.user = userFound;
-      res.redirect("/users/profile/details");
+      res.render("users/userProfile");
     })
     .catch(err => console.log(err));
 });
@@ -36,11 +35,16 @@ router.get("/profile", (req, res, next) => {
 // Route to get another user Profile
 router.get("/profile/:userId", (req, res, next) => {
   User.findById(req.params.userId)
-    .populate("userBoards")
+    .populate({
+      path: "userBoards",
+      model: "Board",
+      populate: {
+        path: "memes",
+        model: "Memes"
+      }})
     .populate("followers")
     .populate("following")
     .then(userFromDB => {
-      console.log("req.session.user ===> ", req.session.user);
       let isFollowing = userFromDB.followers.find(follower => {
         return follower._id + "" === req.session.user._id + "";
       })
@@ -70,7 +74,6 @@ router.post(
         new: true
       })
         .then(updatedUser => {
-          console.log(updatedUser);
           req.session.user = updatedUser;
           res.locals.currentUser = req.session.user;
           res.redirect(`/users/profile`);
@@ -79,7 +82,6 @@ router.post(
     } else {
       User.findByIdAndUpdate(req.session.user._id, req.body, { new: true })
         .then(updatedUser => {
-          console.log(updatedUser);
           req.session.user = updatedUser;
           res.locals.currentUser = req.session.user;
           res.redirect(`/users/profile`);
@@ -112,7 +114,6 @@ router.post("/profile/delete", (req, res, next) => {
 
 //Route to add the follower
 router.post("/follow", (req, res, next) => {
-  console.log("req.body ===> ", req.body);
   User.findByIdAndUpdate(
     req.body.otherUserId,
     { $push: { followers: req.body.currentUserId } },
@@ -135,14 +136,12 @@ router.post("/follow", (req, res, next) => {
 
 //Route to remove the follower
 router.post("/unfollow", (req, res, next) => {
-  console.log("req.body ===> ", req.body);
   User.findByIdAndUpdate(
     req.body.otherUserId,
     { $pull: { followers: req.body.currentUserId } },
     { new: true }
   )
     .then(updatedUser => {
-      console.log("updatedUser ===>", updatedUser);
       User.findByIdAndUpdate(
         req.body.currentUserId,
         { $pull: { following: req.body.otherUserId } },
