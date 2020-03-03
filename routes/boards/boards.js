@@ -55,7 +55,6 @@ router.post("/delete/:boardId", (req, res, next) => {
   if (!req.session.user) {
     res.redirect("/auth/login");
   }
-
   Board.findByIdAndDelete(req.params.boardId)
     .then(() => {
       User.findByIdAndUpdate(
