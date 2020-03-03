@@ -4,6 +4,18 @@ const User = require("../../models/User");
 const Board = require("../../models/Board");
 const uploadCloud = require("../../config/cloudinary-setup");
 
+// Route to display all users
+router.get("/search", (req, res, next) => {
+  console.log("dsdsadsasad", req.query);
+  let searchRegEx = new RegExp(req.query.username, 'ig');
+  console.log(typeof searchRegEx);
+  User.find({username: searchRegEx })
+    .then(usersFromDB => {
+      res.render("users/allUsers", { usersFromDB });
+    })
+    .catch(err => console.log(err));
+});
+
 // Route to open user profile
 router.get("/profile/details", (req, res, next) => {
   res.render("users/userProfile");
@@ -144,14 +156,6 @@ router.post("/unfollow", (req, res, next) => {
     .catch(err => console.log(err));
 });
 
-//Temporary route to display all users
-router.get("/allUsers", (req, res, next) => {
-  User.find({})
-    .then(usersFromDB => {
-      console.log(usersFromDB);
-      res.render("users/allUsers", { usersFromDB });
-    })
-    .catch(err => console.log(err));
-});
+
 
 module.exports = router;

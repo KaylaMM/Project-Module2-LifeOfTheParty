@@ -8,6 +8,7 @@
         <a href="/">Home</a>
         
         <a class="active" href="/users/profile">Boards</a>
+        
 
         {{#if currentUser}}
         <span>Hi, {{ currentUser.username }}</span>
@@ -22,6 +23,7 @@
     </div>
 </nav>
 {{/if}}
+
 
 <div class="card-columns m-5">
     {{#each memes}}
