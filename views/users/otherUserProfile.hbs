@@ -1,4 +1,5 @@
 {{#if userFromDB}}
+
 <!-- SIDEBAR USER AVATAR -->
 <div class="container">
   <div class="row profile">
@@ -6,42 +7,54 @@
       <div class="profile-sidebar">
         <!-- SIDEBAR USERPIC -->
         <div class="profile-userpic">
-        <div class="profile-userpic">
-          <img id="userpic" src="{{userFromDB.avatar}}" alt="userpic" class="img-responsive">
-        </div>
-        <!-- END SIDEBAR USER AVATAR -->
-
-
-
-        <!-- SIDEBAR USER TITLE -->
-        <div class="profile-usertitle">
-          <div class="profile-usertitle-name">
-            <p>Hey {{userFromDB.username}} !</p>
+          <div class="profile-userpic">
+            <img id="userpic" src="{{userFromDB.avatar}}" alt="userpic" class="img-responsive">
           </div>
-          <div>
-            <input type="hidden" id="hidden1" value="{{userFromDB.username}}">
-            <input type="hidden" id="hidden2" value="{{userFromDB.email}}">
-            <button id="update-button" class="btn btn-secondary btn-sm">Update Profile</button>
+          <!-- END SIDEBAR USER AVATAR -->
+
+
+
+          <!-- SIDEBAR USER TITLE -->
+          <div class="profile-usertitle">
+            <div class="profile-usertitle-name">
+              <p>{{userFromDB.username}}</p>
+            </div>
+            <div>
+              <input type="hidden" id="hidden1" value="{{userFromDB.username}}">
+              <input type="hidden" id="hidden2" value="{{userFromDB.email}}">
+              {{!-- <button id="update-button" class="btn btn-secondary btn-sm">Update Profile</button> --}}
+            </div>
           </div>
-        </div>
-        <!-- END SIDEBAR USER TITLE -->
+          <!-- END SIDEBAR USER TITLE -->
 
 
 
-        <!-- FOLLOWERS -->
-        <div class="follow-class">
-          <p>Followers: {{userFromDB.followers.length}}</p>
-          <p>Following: {{userFromDB.following.length}}</p>
-        </div>
-        <!-- END FOLLOWERS -->
+          <!-- FOLLOWERS -->
+          <div class="follow-class">
+            <p>Followers: {{userFromDB.followers.length}}</p>
+            <p>Following: {{userFromDB.following.length}}</p>
+          </div>
+          <!-- END FOLLOWERS -->
 
-        <!-- SIDEBAR BUTTONS -->
-        <div class="profile-userbuttons">
-          {{#if message}}
+          <!-- SIDEBAR BUTTONS -->
+          <div class="profile-userbuttons">
+            {{#if message}}
             <form action="/users/unfollow" method="POST">
               <input type="hidden" name="otherUserId" value="{{userFromDB._id}}">
               <input type="hidden" name="currentUserId" value="{{currentUser._id}}">
               <button class="btn btn-secondary btn-sm" type="submit">Unfollow</button>
+<<<<<<< HEAD
+              {{else}}
+              <form action="/users/follow" method="POST">
+                <input type="hidden" name="otherUserId" value="{{userFromDB._id}}">
+                <input type="hidden" name="currentUserId" value="{{currentUser._id}}">
+                <button class="btn btn-secondary btn-sm" type="submit">Follow</button>
+                {{/if}}
+              </form>
+              {{!-- <button type="button" class="btn btn-secondary btn-sm">Message</button> --}}
+          </div>
+          <!-- END SIDEBAR BUTTONS -->
+=======
           {{else}}
             <form action="/users/follow" method="POST">
               <input type="hidden" name="otherUserId" value="{{userFromDB._id}}">
@@ -49,41 +62,34 @@
               <button class="btn btn-secondary btn-sm" type="submit">Follow</button>
           {{/if}}
           </form>
+>>>>>>> cef345c08b937390fea8e921d42b59e09e0a03da
         </div>
-        <!-- END SIDEBAR BUTTONS -->
       </div>
-    </div>
 
 
 
-    <!-- USER BOARDS TITLE -->
-    <div class="col-md-9" style="margin-left: 250px;">
-      <div class="profile-content">
-        {{#each userFromDB.userBoards}}
-        <!-- EACH BOARD ITEM -->
-        <div class="container">
-          <div class="row">
-            <div class="col-3 col-sm-3 col-md-3 image-grid-item" >
-              <div style="background-image: " class="image-grid-cover">
-                {{!-- -=-=-=-=-=-=-=--=-=-=-=-=-=-=-=-=-=- --}}
-                <a type="anchor" class="created-board" href="/boards/{{this._id}}">{{this.title}}</a>
-                {{!-- -=-=-=-=-=-=-=--=-=-=-=-=-=-=-=-=-=- --}}
+      <!-- USER BOARDS TITLE -->
+      <div class="col-md-9" style="margin-left: 250px;">
+        <div class="profile-content">
+          {{#each userFromDB.userBoards}}
+          <!-- EACH BOARD ITEM -->
+          <div class="container">
+            <div class="row">
+              <div class="col-3 col-sm-3 col-md-3 image-grid-item">
+                <div style="background-image: " class="image-grid-cover">
+                  {{!-- -=-=-=-=-=-=-=--=-=-=-=-=-=-=-=-=-=- --}}
+                  <a type="anchor" class="created-board" href="/boards/{{this._id}}">{{this.title}}</a>
+                  {{!-- -=-=-=-=-=-=-=--=-=-=-=-=-=-=-=-=-=- --}}
+                </div>
               </div>
             </div>
           </div>
+          {{/each}}
+          <!-- EACH BOARD ITEM END -->
+
+          <!-- USER BOARDS TITLE END -->
         </div>
-        {{/each}}
-        <!-- EACH BOARD ITEM END -->
-        <form class="user-board" action="/boards/create" method="POST" id="form-container">
-          <br><br>
-          <input id="title" type="text" name="title" placeholder="Board Title Here...">
-          <br><br>
-          <button class="btn btn-secondary btn-sm">Create Board</button>
-        </form>
       </div>
-      <!-- USER BOARDS TITLE END -->
-    </div>
-</div>
-<br>
-<br>
-{{/if}}
+      <br>
+      <br>
+      {{/if}}
