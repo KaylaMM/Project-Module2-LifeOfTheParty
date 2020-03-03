@@ -43,7 +43,6 @@
               <input type="hidden" name="otherUserId" value="{{userFromDB._id}}">
               <input type="hidden" name="currentUserId" value="{{currentUser._id}}">
               <button class="btn btn-secondary btn-sm" type="submit">Unfollow</button>
-<<<<<<< HEAD
               {{else}}
               <form action="/users/follow" method="POST">
                 <input type="hidden" name="otherUserId" value="{{userFromDB._id}}">
@@ -51,45 +50,33 @@
                 <button class="btn btn-secondary btn-sm" type="submit">Follow</button>
                 {{/if}}
               </form>
-              {{!-- <button type="button" class="btn btn-secondary btn-sm">Message</button> --}}
           </div>
-          <!-- END SIDEBAR BUTTONS -->
-=======
-          {{else}}
-            <form action="/users/follow" method="POST">
-              <input type="hidden" name="otherUserId" value="{{userFromDB._id}}">
-              <input type="hidden" name="currentUserId" value="{{currentUser._id}}">
-              <button class="btn btn-secondary btn-sm" type="submit">Follow</button>
-          {{/if}}
-          </form>
->>>>>>> cef345c08b937390fea8e921d42b59e09e0a03da
         </div>
-      </div>
 
 
 
-      <!-- USER BOARDS TITLE -->
-      <div class="col-md-9" style="margin-left: 250px;">
-        <div class="profile-content">
-          {{#each userFromDB.userBoards}}
-          <!-- EACH BOARD ITEM -->
-          <div class="container">
-            <div class="row">
-              <div class="col-3 col-sm-3 col-md-3 image-grid-item">
-                <div style="background-image: " class="image-grid-cover">
-                  {{!-- -=-=-=-=-=-=-=--=-=-=-=-=-=-=-=-=-=- --}}
-                  <a type="anchor" class="created-board" href="/boards/{{this._id}}">{{this.title}}</a>
-                  {{!-- -=-=-=-=-=-=-=--=-=-=-=-=-=-=-=-=-=- --}}
+        <!-- USER BOARDS TITLE -->
+        <div class="col-md-9" style="margin-left: 250px;">
+          <div class="profile-content">
+            {{#each userFromDB.userBoards}}
+            <!-- EACH BOARD ITEM -->
+            <div class="container">
+              <div class="row">
+                <div class="col-3 col-sm-3 col-md-3 image-grid-item">
+                  <div style="background-image: " class="image-grid-cover">
+                    {{!-- -=-=-=-=-=-=-=--=-=-=-=-=-=-=-=-=-=- --}}
+                    <a type="anchor" class="created-board" href="/boards/{{this._id}}">{{this.title}}</a>
+                    {{!-- -=-=-=-=-=-=-=--=-=-=-=-=-=-=-=-=-=- --}}
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-          {{/each}}
-          <!-- EACH BOARD ITEM END -->
+            {{/each}}
+            <!-- EACH BOARD ITEM END -->
 
-          <!-- USER BOARDS TITLE END -->
+            <!-- USER BOARDS TITLE END -->
+          </div>
         </div>
-      </div>
-      <br>
-      <br>
-      {{/if}}
+        <br>
+        <br>
+        {{/if}}
