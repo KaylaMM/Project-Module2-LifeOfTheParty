@@ -6,18 +6,18 @@
         </div>
         <ul class="nav navbar-nav"></ul>
         <a href="/">Home</a>
-        
+
         <a class="active" href="/users/profile">Boards</a>
 
         {{#if currentUser}}
         <span>Hi, {{ currentUser.username }}</span>
         <a class="active" href="/users/profile"><img src={{currentUser.avatar}} alt="avatar" width="100px"
-                    height="100px"></a>
-         <a href="/auth/logout">Logout</a>
+                height="100px"></a>
+        <a href="/auth/logout">Logout</a>
         {{/if}}
         {{else}}
-         <a href="auth/login">Login</a>
-         <a href="auth/signup">Signup</a>
+        <a href="auth/login">Login</a>
+        <a href="auth/signup">Signup</a>
         </ul>
     </div>
 </nav>
@@ -42,8 +42,3 @@
     </div>
     {{/each}}
 </div>
-
-{{#unless currentUser}}
-<a href="auth/login">Log In</a>
-<a href="auth/signup">Sign Up</a>
-{{/unless}}
