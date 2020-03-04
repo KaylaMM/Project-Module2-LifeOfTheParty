@@ -11,6 +11,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
     integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
     crossorigin="anonymous"></script>
+  <link rel="icon" href="/images/favicon-32x32.png" type="image/x-icon">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
     integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
   <link rel="stylesheet" href="/stylesheets/style.css">
@@ -30,13 +31,18 @@
       <span id="nav-bar-text">Hi, {{ currentUser.username }}</span>
       <a class="active" href="/users/profile"><img class="profile-userpic-nav" src={{currentUser.avatar}}
           alt="avatar"></a>
-      <a class="active" href="/users/profile">Profile</a>
-      <a href="/auth/logout">Logout</a>
+      <a class="btn btn-primary" href="/users/profile">Profile</a>
+      <a class="btn btn-danger" href="/auth/logout">Logout</a>
     </div>
     {{else}}
-    <div id="nav-bar-logged">
-      <a href="auth/login">Login</a>
-      <a href="auth/signup">Signup</a>
+    <div id="nav-bar-logged-off">
+      <div id="logo-nav">
+        <a class="navbar-brand" href="/"><img id="brand-logo" src="/images/imageedit_1_2937631585.png" alt="user-logo"></a>
+      </div>
+      <div id="nav-buttons">
+        <a class="btn btn-primary" href="auth/login">Login</a>
+        <a class="btn btn-success" href="auth/signup">Signup</a>
+      </div>
     </div>
     {{/if}}
   </nav>

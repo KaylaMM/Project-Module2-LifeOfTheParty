@@ -1,19 +1,34 @@
-<div class="card-columns m-5 test">
-    {{#each memes}}
-    <div class="card p-4">
-        <img src="{{this.url}}" class="card-img-top m-2" alt="meme">
-        <div class="m-3">
-            <form method="POST" action="/boards/add-meme">
-                <input type="hidden" id="hiddenInput" value="{{this.url}}" name="memeUrl">
-                <select type="select" name="boardId" id="board-selector">
-                    <option value=""></option>
-                    {{#each ../userBoards}}
-                    <option value="{{this._id}}">{{this.title}}</option>
-                    {{/each}}
-                </select>
-                <button type="submit">Save meme to board</button>
-            </form>
+{{#if currentUser}}
+    <div class="card-columns m-5 test">
+        {{#each memes}}
+        <div class="card p-4">
+            <img src="{{this.url}}" class="card-img-top m-2" alt="meme">
+            <div class="m-3">
+                <form method="POST" action="/boards/add-meme">
+                    <input type="hidden" id="hiddenInput" value="{{this.url}}" name="memeUrl">
+                    <select type="select" name="boardId" id="board-selector">
+                        <option value=""></option>
+                        {{#each ../userBoards}}
+                        <option value="{{this._id}}">{{this.title}}</option>
+                        {{/each}}
+                    </select>
+                    <button type="submit">Save meme to board</button>
+                </form>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+{{else}}
+    <div id="landing-page">
+        <div id="welcome-container" class="align-self-center">
+            <div class="other">
+                <div id="large-logo">
+                    <img id="logo" src="/images/imageedit_1_2937631585.png" alt="logo">
+                </div>
+                <div id="blurb-box">
+                    <h2 id="blurb"> An app where you can save your favorite memes, and create the next trending one. Created with meme lovers in mind! </h2>
+                </div>
+            </div>
         </div>
     </div>
-    {{/each}}
-</div>
+{{/if}}

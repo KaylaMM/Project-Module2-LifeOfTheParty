@@ -23,7 +23,7 @@ router.get("/", (req, res, next) => {
       })
       .catch(err => console.log("Error while getting the data: ", err));
   } else {
-    res.render("homepage");
+    res.render("index");
   }
 });
 
