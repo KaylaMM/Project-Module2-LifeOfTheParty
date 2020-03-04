@@ -35,7 +35,7 @@ body {
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
-.container {
+#container {
   background-color: grey;
   border-radius: 1vw;
   width: 50vw;
@@ -74,4 +74,19 @@ body {
 
 #board-details {
   margin: 75px 0px 0px 50px;
+}
+
+#nav-bar-logged-off {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 1420px;
+}
+
+#logo-nav {
+  width: 100px;
+}
+
+#nav-buttons {
+  width: 200px;
 }

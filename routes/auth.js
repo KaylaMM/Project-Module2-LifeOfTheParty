@@ -11,32 +11,16 @@ router.get("/login", (req, res, next) => {
   res.render("auth/login", { message: req.flash("error") });
 });
 
-// I am adding a comment here because git is not accepting my pusha nd I don't know why
-
-// this is the post route when using passport to login the user.
-// Since we are using sessions to log in the user, we will not be using the passport method for user login.
-// router.post(
-//     "/login",
-//     passport.authenticate("local", {
-//         successRedirect: "/",
-//         failureRedirect: "/auth/login",
-//         failureFlash: true,
-//         passReqToCallback: true
-//     })
-// );
-
 router.post("/login", (req, res, next) => {
   User.findOne({ username: req.body.username })
     .then(userFromDB => {
       if (userFromDB === null) {
-        console.log(userFromDB);
         res.render("auth/login", {
           message: "That username was not found in the system"
         });
         return;
       }
       if (bcrypt.compareSync(req.body.password, userFromDB.password)) {
-        console.log(userFromDB);
         req.session.user = userFromDB;
         res.locals.currentUser = req.session.user;
         res.redirect("/");
@@ -85,7 +69,6 @@ router.post("/signup", uploadCloud.single("avatar"), (req, res, next) => {
         res.redirect("/");
       })
       .catch(err => {
-        console.log(err);
         res.render("auth/signup", { message: "Something went wrong" });
       });
   });
