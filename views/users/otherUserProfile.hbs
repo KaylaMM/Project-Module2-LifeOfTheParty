@@ -31,38 +31,7 @@
               </form>
           </div>
         </div>
-<<<<<<< HEAD
-
-
-
-        <!-- USER BOARDS TITLE -->
-        <div class="col-md-9" style="margin-left: 250px;">
-          <div class="profile-content">
-            {{#each userFromDB.userBoards}}
-            <!-- EACH BOARD ITEM -->
-            <div class="container">
-              <div class="row">
-                <div class="col-3 col-sm-3 col-md-3 image-grid-item">
-                  <div style="background-image: " class="image-grid-cover">
-                    {{!-- -=-=-=-=-=-=-=--=-=-=-=-=-=-=-=-=-=- --}}
-                    <a type="anchor" class="created-board" href="/boards/{{this._id}}">{{this.title}}</a>
-                    {{!-- -=-=-=-=-=-=-=--=-=-=-=-=-=-=-=-=-=- --}}
-                  </div>
-                </div>
-              </div>
-            </div>
-            {{/each}}
-            <!-- EACH BOARD ITEM END -->
-
-            <!-- USER BOARDS TITLE END -->
-          </div>
-        </div>
-        <br>
-        <br>
-        {{/if}}
-=======
       </div>
-        </div>
   <div id="userboard-container">
     {{#each userFromDB.userBoards}}
       <div class="profile-sidebar-all-users">
@@ -84,4 +53,3 @@
   </div>
 </div>
 {{/if}}
->>>>>>> 23134c7f11245c01ad1e145204b8c76520239b28
