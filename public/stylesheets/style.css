@@ -1,11 +1,10 @@
  body {
-  margin: 10px;
-  padding: 10px;
-  background-color: white
-}
+   margin: 10px;
+   padding: 10px;
+   /* below is the background image */
+   background-image: url("../images/background2.jpg");
+ }
 
-.card {
-  box-shadow: 5px 5px 15px gray;
-}
-
-
+ .card {
+   box-shadow: 5px 5px 15px gray;
+ }
