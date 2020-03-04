@@ -4,15 +4,11 @@ window.onload = () => {
     const boardId = document.getElementById("boardId").value;
     document.getElementById('board-details').innerHTML = `
       <form class="auth-form" action="/boards/update/${boardId}" method="POST" id="form-container">
-        <br><br>
-        <ul>
-          <li>Board Name: <input id="title" type="text" name="title" value=${boardTitle}>
-        </ul>
-        <br><br>
-        <button type="submit">Update board</button>
+        <span>Board Name: <input id="title" type="text" name="title" value=${boardTitle}></span>
+        <button class="btn-primary" type="submit">Update board</button>
         </form>
-        <form class="auth-form" action="/boards/delete/${boardId}" method="POST" id="form-container">
-          <button type="submit">Delete board</button>
+        <form class="auth-form" action="/boards/delete/${boardId}" method="POST" id="form-container" style="margin-top: 10px">
+          <button class="btn-danger" type="submit">Delete board</button>
         </form>`
     };
 
@@ -28,7 +24,7 @@ window.onload = () => {
       <br>
       <input id="newMeme" type="file" name="memeUrl">
       <br>
-      <button type="submit">Create new meme</button>
+      <button class="btn-primary" type="submit">Create new meme</button>
     </form>`;
   }
 }

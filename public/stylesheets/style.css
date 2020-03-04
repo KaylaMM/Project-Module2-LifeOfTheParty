@@ -8,4 +8,16 @@
   box-shadow: 5px 5px 15px gray;
 }
 
+#container-all-users {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-top: 50px;
+  flex-wrap: wrap;
+  width: 1200px;
+  padding: 0!important;
+}
 
+#board-details {
+  margin: 75px 0px 0px 50px;
+}
