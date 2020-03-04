@@ -1,3 +1,25 @@
+<<<<<<< HEAD
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-10 col-lg-8">
+      <form class="auth-form" action="/users/search" method="GET" id="form-container">
+        <div class="card-body row no-gutters align-items-center">
+          <div class="col">
+            <input class="form-control form-control-lg form-control-borderless" name="username" type="text"
+              placeholder="Search for users" />
+          </div>
+          <div class="col-auto">
+            <button class="btn btn-primary btn-lg" type="submit">Search</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+{{!-- If User is not logged in, display: --}}
+=======
+>>>>>>> 23134c7f11245c01ad1e145204b8c76520239b28
 {{#unless currentUser}}
 <a href="auth/login">Log In</a>
 <a href="auth/signup">Sign Up</a>
@@ -22,6 +44,18 @@
           <span>Followers: {{currentUser.followers.length}}</span>
           <br>
           <span>Following: {{currentUser.following.length}}</span>
+<<<<<<< HEAD
+          <form class="user-board" action="/boards/create" method="POST" id="form-container">
+            <br>
+            <input id="title" type="text" name="title" placeholder="Board Title Here...">
+            <button class="btn btn-secondary btn-sm">Create Board</button>
+            {{#if message }}
+            <div class="error-message">{{ message }}</div>
+            {{/if}}
+            <br><br>
+
+          </form>
+=======
         <form class="user-board" action="/boards/create" method="POST" id="form-container">
           <br>
           <input id="title" type="text" name="title" placeholder="Board Title Here...">
@@ -31,8 +65,24 @@
           {{/if}}
           <br><br>
         </form>
+>>>>>>> 23134c7f11245c01ad1e145204b8c76520239b28
         </div>
     </div>
+<<<<<<< HEAD
+    <!-- USER BOARDS TITLE -->
+    <div class=div class="container">
+      <div class="profile-content">
+        {{#each currentUser.userBoards}}
+        <!-- EACH BOARD ITEM -->
+        <div class="container">
+          <div class="row">
+            <div class="col-3 col-sm-3 col-md-3 image-grid-item">
+              <div style="background-image: " class="image-grid-cover">
+                {{!-- -=-=-=-=-=-=-=--=-=-=-=-=-=-=-=-=-=- --}}
+                <a type="anchor" class="created-board" href="/boards/{{this._id}}">{{this.title}}</a>
+                {{!-- -=-=-=-=-=-=-=--=-=-=-=-=-=-=-=-=-=- --}}
+              </div>
+=======
     <div id="userboard-container">
       {{#each currentUser.userBoards}}
           <div class="profile-sidebar-all-users">
@@ -48,10 +98,22 @@
               <p>{{this.title}}</p>
               <a class="btn btn-secondary btn-sm" href="/boards/{{this._id}}">Visit board</a>
             </div>
+>>>>>>> 23134c7f11245c01ad1e145204b8c76520239b28
             </div>
         </div>
     {{/each}}
+<<<<<<< HEAD
+    <!-- EACH BOARD ITEM END -->
+  </div>
+  <!-- USER BOARDS TITLE END -->
+</div>
+</div>
+</div>
+<br>
+<br>
+=======
       </div>
     </div>
+>>>>>>> 23134c7f11245c01ad1e145204b8c76520239b28
 ​
 <script src="/javascripts/userProfile-DOM.js"></script>
