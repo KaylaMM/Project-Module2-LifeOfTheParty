@@ -37,6 +37,15 @@
   border-radius: 50% !important;
 }
 
+.profile-userpic-nav {
+  margin: -3px auto;
+  width: 3vw;
+  height: 3vw;
+  /* -webkit-border-radius: 50% !important; */
+  /* -moz-border-radius: 50% !important; */
+  border-radius: 50% !important;
+}
+
 #userpic {
   -webkit-border-radius: 50% !important;
   -moz-border-radius: 50% !important;
@@ -106,4 +115,23 @@
   justify-content: center;
   align-items: center;
   flex-direction: row;
+}
+
+#nav-bar-logged {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 400px;
+}
+
+#nav-bar-text {
+  color: white;
+}
+
+#search-input {
+  width: 600px;
+}
+
+#brand-logo {
+  width: 100px;
 }
