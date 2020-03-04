@@ -1,39 +1,21 @@
+{{#unless currentUser}}
+<a href="auth/login">Log In</a>
+<a href="auth/signup">Sign Up</a>
+{{/unless}}
 {{#if userFromDB}}
-
-<!-- SIDEBAR USER AVATAR -->
-<div class="container">
-  <div class="row profile">
-    <div class="col-md-3">
+<div id="profile-container">
       <div class="profile-sidebar">
-        <!-- SIDEBAR USERPIC -->
         <div class="profile-userpic">
-          <div class="profile-userpic">
-            <img id="userpic" src="{{userFromDB.avatar}}" alt="userpic" class="img-responsive">
+          <img id="userpic" src="{{userFromDB.avatar}}" alt="userpic" class="img-responsive">
+        </div>
+        <div class="profile-usertitle">
+          <div class="profile-usertitle-name">
+            <p>{{userFromDB.username}} !</p>
           </div>
-          <!-- END SIDEBAR USER AVATAR -->
-          <!-- SIDEBAR USER TITLE -->
-          <div class="profile-usertitle">
-            <div class="profile-usertitle-name">
-              <p>{{userFromDB.username}}</p>
-            </div>
-            <div>
-              <input type="hidden" id="hidden1" value="{{userFromDB.username}}">
-              <input type="hidden" id="hidden2" value="{{userFromDB.email}}">
-              {{!-- <button id="update-button" class="btn btn-secondary btn-sm">Update Profile</button> --}}
-            </div>
-          </div>
-          <!-- END SIDEBAR USER TITLE -->
-
-
-
-          <!-- FOLLOWERS -->
-          <div class="follow-class">
+        </div>
+        <div class="follow-class">
             <p>Followers: {{userFromDB.followers.length}}</p>
             <p>Following: {{userFromDB.following.length}}</p>
-          </div>
-          <!-- END FOLLOWERS -->
-
-          <!-- SIDEBAR BUTTONS -->
           <div class="profile-userbuttons">
             {{#if message}}
             <form action="/users/unfollow" method="POST">
@@ -49,6 +31,7 @@
               </form>
           </div>
         </div>
+<<<<<<< HEAD
 
 
 
@@ -77,3 +60,28 @@
         <br>
         <br>
         {{/if}}
+=======
+      </div>
+        </div>
+  <div id="userboard-container">
+    {{#each userFromDB.userBoards}}
+      <div class="profile-sidebar-all-users">
+        <div class="profile-userpic">
+          {{#if this.memes.0.meme}}
+          <img id="userpic" src="{{this.memes.0.meme}}" alt="userpic" class="img-responsive">
+          {{else}}
+          <img id="userpic" src="/images/troll-face.png" alt="userpic" class="img-responsive">
+          {{/if}}
+        </div>
+        <div class="profile-usertitle">
+          <div class="profile-usertitle-name">
+            <p>{{this.title}}</p>
+            <a class="btn btn-secondary btn-sm" href="/boards/{{this._id}}">Visit board</a>
+          </div>
+        </div>
+      </div>
+    {{/each}}
+  </div>
+</div>
+{{/if}}
+>>>>>>> 23134c7f11245c01ad1e145204b8c76520239b28

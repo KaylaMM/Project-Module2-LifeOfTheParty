@@ -10,15 +10,15 @@
   background: black;
   border-radius: 10px;
   width: 25vw;
-  height: auto;
+  height: 450px;
   /* min-height: 460px; */
   opacity: 0.7;
-  position: fixed;
 }
 
 /* Profile sidebar on allUsers*/
 .profile-sidebar-all-users {
   padding: 30px 0px 20px 0px;
+  margin: 10px;
   left: 13px;
   background: black;
   border-radius: 10px;
@@ -134,4 +134,21 @@
 
 #brand-logo {
   width: 100px;
+}
+
+.m-5 {
+  margin-top: 75px!important;
+}
+
+#profile-container {
+  display: flex;
+  justify-content: center;
+  padding: 60px;
+}
+
+#userboard-container {
+  width: 1100px;
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
 }
