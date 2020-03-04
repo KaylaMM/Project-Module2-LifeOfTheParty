@@ -1,7 +1,58 @@
 body {
   margin: 10px;
   padding: 10px;
-  /* background-image: url("../images/background2.jpg"); */
+}
+
+#landing-page {
+  height: 100vh;
+}
+
+#welcome-container {
+  background-color: grey;
+  border-radius: 1vw;
+  width: 50vw;
+  padding: 3vw;
+  position: relative;
+  top: 15vh;
+  left: 24vw;
+}
+
+#large-logo {
+  display: flex;
+  justify-content: center;
+}
+
+#blurb-box {
+  display: flex;
+  justify-content: center;
+}
+
+#blurb {
+  width: 36vw;
+  text-align: center;
+  color: white;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.container {
+  background-color: grey;
+  border-radius: 1vw;
+  width: 50vw;
+  padding: 3vw;
+  position: relative;
+  top: 15vh;
+  left: 1vw;
+}
+
+.panel-title {
+  font-family: inherit;
+  font: "Proxima Nova Soft"
+}
+
+.account-message {
+  margin-top: 15px;
+  ;
 }
 
 .card {
@@ -18,7 +69,7 @@ body {
   margin-top: 50px;
   flex-wrap: wrap;
   width: 1200px;
-  padding: 0!important;
+  padding: 0 !important;
 }
 
 #board-details {
