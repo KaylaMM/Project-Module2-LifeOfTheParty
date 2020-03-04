@@ -1,107 +1,154 @@
+/* Profile container */
+.profile {
+  margin: 20px 0;
+}
 
-  
-  /* Profile container */
-  .profile {
-    margin: 20px 0;
-  }
-  
-  /* Profile sidebar */
-  .profile-sidebar {
-    padding: 20px 0 10px 0;
-    background: rgb(141, 132, 132);
-    /* opacity: 0.5; */
-  }
-  
-  .profile-userpic img {
-    float: none;
-    margin: 0 auto;
-    width: 50%;
-    height: 50%;
-    -webkit-border-radius: 50% !important;
-    -moz-border-radius: 50% !important;
-    border-radius: 50% !important;
-  }
-  
-  .profile-usertitle {
-    text-align: center;
-    margin-top: 20px;
-  }
-  
-  .profile-usertitle-name {
-    color: #5a7391;
-    font-size: 16px;
-    font-weight: 600;
-    margin-bottom: 7px;
-  }
-  
-  .profile-usertitle-job {
-    text-transform: uppercase;
-    color: #5b9bd1;
-    font-size: 12px;
-    font-weight: 600;
-    margin-bottom: 15px;
-  }
-  
-  .profile-userbuttons {
-    text-align: center;
-    margin-top: 10px;
-  }
-  
-  .profile-userbuttons .btn {
-    text-transform: uppercase;
-    font-size: 11px;
-    font-weight: 600;
-    padding: 6px 15px;
-    margin-right: 5px;
-  }
-  
-  .profile-userbuttons .btn:last-child {
-    margin-right: 0px;
-  }
-      
-  .profile-usermenu {
-    margin-top: 30px;
-  }
-  
-  .profile-usermenu ul li {
-    border-bottom: 1px solid #f0f4f7;
-  }
-  
-  .profile-usermenu ul li:last-child {
-    border-bottom: none;
-  }
-  
-  .profile-usermenu ul li a {
-    color: #93a3b5;
-    font-size: 14px;
-    font-weight: 400;
-  }
-  
-  .profile-usermenu ul li a i {
-    margin-right: 8px;
-    font-size: 14px;
-  }
-  
-  .profile-usermenu ul li a:hover {
-    background-color: #fafcfd;
-    color: #5b9bd1;
-  }
-  
-  .profile-usermenu ul li.active {
-    border-bottom: none;
-  }
-  
-  .profile-usermenu ul li.active a {
-    color: #5b9bd1;
-    background-color: #f6f9fb;
-    border-left: 2px solid #5b9bd1;
-    margin-left: -2px;
-  }
-  
-  /* Profile Content */
-  .profile-content {
-    padding: 20px;
-    background: rgb(141, 132, 132);
-    /* opacity: 0.5; */
-    min-height: 460px;
-  }
+/* Profile sidebar */
+.profile-sidebar {
+  padding: 30px 0px 20px 0px;
+  left: 13px;
+  background: black;
+  border-radius: 10px;
+  width: 25vw;
+  height: 450px;
+  /* min-height: 460px; */
+  opacity: 0.7;
+}
+
+/* Profile sidebar on allUsers*/
+.profile-sidebar-all-users {
+  padding: 30px 0px 20px 0px;
+  margin: 10px;
+  left: 13px;
+  background: black;
+  border-radius: 10px;
+  width: 25vw;
+  height: 300px;
+  opacity: 0.7;
+  position: relative;
+}
+
+.profile-userpic {
+  margin: -3px auto;
+  width: 10vw;
+  height: 10vw;
+  /* -webkit-border-radius: 50% !important; */
+  /* -moz-border-radius: 50% !important; */
+  border-radius: 50% !important;
+}
+
+.profile-userpic-nav {
+  margin: -3px auto;
+  width: 3vw;
+  height: 3vw;
+  /* -webkit-border-radius: 50% !important; */
+  /* -moz-border-radius: 50% !important; */
+  border-radius: 50% !important;
+}
+
+#userpic {
+  -webkit-border-radius: 50% !important;
+  -moz-border-radius: 50% !important;
+  width: 10vw;
+  height: 10vw;
+}
+
+.profile-usertitle {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.profile-usertitle-name {
+  color: white;
+  font: impact;
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+.profile-userbuttons {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.profile-userbuttons .btn {
+  text-transform: uppercase;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 6px 15px;
+  margin-right: 5px;
+}
+
+.profile-userbuttons .btn:last-child {
+  margin-right: 0px;
+}
+
+#update-button {
+  margin: 1px;
+}
+
+.follow-class {
+  color: white;
+  font: impact;
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  text-align: center;
+  border-spacing: 10px;
+}
+
+
+/* Profile Content */
+#profile-content {
+  width: 71vw;
+  padding: 3vw;
+  background: black;
+  border-radius: 1vw;
+  opacity: 0.7;
+  height: 80vw;
+  position: relative;
+  left: -4vw;
+}
+
+#container-all-users {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+
+#nav-bar-logged {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 400px;
+}
+
+#nav-bar-text {
+  color: white;
+}
+
+#search-input {
+  width: 600px;
+}
+
+#brand-logo {
+  width: 100px;
+}
+
+.m-5 {
+  margin-top: 75px!important;
+}
+
+#profile-container {
+  display: flex;
+  justify-content: center;
+  padding: 60px;
+}
+
+#userboard-container {
+  width: 1100px;
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}

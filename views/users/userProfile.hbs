@@ -1,147 +1,57 @@
-{{!-- If User is not logged in, display: --}}
-​
-
 {{#unless currentUser}}
 <a href="auth/login">Log In</a>
 <a href="auth/signup">Sign Up</a>
 {{/unless}}
-
-
-
-				<!-- SIDEBAR USER AVATAR -->
-<div class="container">
-    <div class="row profile">
-		<div class="col-md-3">
-			<div class="profile-sidebar">
-				<!-- SIDEBAR USERPIC -->
-				<div class="profile-userpic">
-          <img id="user-avatar" src="{{currentUser.avatar}}" alt="user_avatar" height="200" width="200" class="img-responsive"> 
-				</div>
-				<!-- END SIDEBAR USER AVATAR -->
-
-
-
-				<!-- SIDEBAR USER TITLE -->
-				<div class="profile-usertitle">
-					<div class="profile-usertitle-name">
-						<p>Hey {{currentUser.username}} !</p>
-					</div>
+<div id="profile-container">
+      <div class="profile-sidebar">
+        <div class="profile-userpic">
+          <img id="userpic" src="{{currentUser.avatar}}" alt="userpic" class="img-responsive">
+        </div>
+        <div class="profile-usertitle">
+          <div class="profile-usertitle-name">
+            <p>Hey {{currentUser.username}} !</p>
+          </div>
           <div>
             <input type="hidden" id="hidden1" value="{{currentUser.username}}">
             <input type="hidden" id="hidden2" value="{{currentUser.email}}">
             <button id="update-button" class="btn btn-secondary btn-sm">Update Profile</button>
           </div>
-				</div>
-				<!-- END SIDEBAR USER TITLE -->
-
-
-
-        <!-- FOLLOWERS -->
+        </div>
         <div class="follow-class">
-          <p>Followers: {{currentUser.userFollowers.[{i}]}}</p>
-          <p>Following: {{currentUser.userFollowed.length}}</p>
+          <br>
+          <span>Followers: {{currentUser.followers.length}}</span>
+          <br>
+          <span>Following: {{currentUser.following.length}}</span>
+        <form class="user-board" action="/boards/create" method="POST" id="form-container">
+          <br>
+          <input id="title" type="text" name="title" placeholder="Board Title Here...">
+          <button class="btn btn-secondary btn-sm">Create Board</button>
+          {{#if message }}
+          <div class="error-message">{{ message }}</div>
+          {{/if}}
+          <br><br>
+        </form>
         </div>
-        <!-- END FOLLOWERS -->
-
-
-
-				<!-- SIDEBAR BUTTONS -->
-				<div class="profile-userbuttons">
-					<button type="button" class="btn btn-secondary btn-sm">Follow</button>
-					<button type="button" class="btn btn-secondary btn-sm">Message</button>
-				</div>
-				<!-- END SIDEBAR BUTTONS -->
-
-
-        
-			</div>
-		</div>
-
-
-
-         <!-- USER BOARDS TITLE -->
-		    <div class="col-md-9">
-            <div class="profile-content">
-              <p> {{#each currentUser.userBoards}} </p>
-              <button type="button" class="btn btn-secondary btn-sm" href="/boards/{{this._id}}"> {{this.title}} </button>
-              {{/each}}
-                <form class="user-board" action="/boards/create" method="POST" id="form-container">
-                  <label for="title">Title</label>
-                  <input id="title" type="text" name="title" placeholder="Board Title Here...">
-                  <br><br>
-                    {{#if message }}
-                      <div class="error-message">{{ message }}</div>
-                    {{/if}}
-                  <br><br>
-                  <button>Create Board</button>
-                </form>
+    </div>
+  <div id="userboard-container">
+    {{#each currentUser.userBoards}}
+    <div class="profile-sidebar-all-users">
+      <div class="profile-userpic">
+        {{#if this.memes.0.meme}}
+        <img id="userpic" src="{{this.memes.0.meme}}" alt="userpic" class="img-responsive">
+        {{else}}
+        <img id="userpic" src="/images/troll-face.png" alt="userpic" class="img-responsive">
+        {{/if}}
+      </div>
+      <div class="profile-usertitle">
+        <div class="profile-usertitle-name">
+          <p>{{this.title}}</p>
+          <a class="btn btn-secondary btn-sm" href="/boards/{{this._id}}">Visit board</a>
         </div>
-        <!-- USER BOARDS TITLE END -->
-
-
-
-        <!-- USER BOARDS -->
-        <div>
-           
-        </div>
-        <!-- USER BOARDS END -->
-
-
-
-		</div>
-	</div>
-</div>
-<br>
-<br>
-
-
-
-{{!-- OLD USER PROFILE --}}
-
-{{!-- User Info --}}
-{{!-- <article>
-  <img id="user-avatar" src="{{currentUser.avatar}}" alt="user_avatar" height="200" width="200"> 
-</article> --}}
-<ul id="userDetails">
-  {{!-- <li>Hey {{currentUser.username}} !</li>
-  <li>Email: {{currentUser.email}}</li> --}}
-  {{!-- <input type="hidden" id="hidden1" value="{{currentUser.username}}">
-  <input type="hidden" id="hidden2" value="{{currentUser.email}}">
-  <button id="update-button">Update Profile</button>
-</ul> --}}
-<ul>
-  {{!-- <li>Followers: {{currentUser.userFollowers.[{i}]}}</li>
-  <li>Following: {{currentUser.userFollowed.length}}</li> --}}
-  {{!-- <li>Boards:
-    <ul>{{#each currentUser.userBoards}}
-      <li>
-        <a href="/boards/{{this._id}}"> {{this.title}}</a>
-      </li>
-        {{/each}}
-    </ul>
-  </li>
-</ul>
-</article> --}}
-​
-{{!-- <form class="user-board" action="/boards/create" method="POST" id="form-container">
-  <label for="title">Title</label>
-  <input id="title" type="text" name="title" placeholder="Board Title Here...">
-  <br><br>
-  {{#if message }}
-  <div class="error-message">{{ message }}</div>
-  {{/if}}
-  <br><br>
-  <button>Create Board</button>
-</form> --}}
-​
-{{!-- Boards --}}
-{{!-- <article>
-  <div></div>
+      </div>
+    </div>
+    {{/each}}
   </div>
-<ul>
- <img src="{{meme}}" alt="" height="200" width="200"> 
-  <img src="{{meme}}" alt="" height="200" width="200"> 
-</ul>
-</article> --}}
+</div>
 ​
 <script src="/javascripts/userProfile-DOM.js"></script>

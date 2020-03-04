@@ -1,0 +1,15 @@
+<div id="container-all-users" class="container">
+  {{#each usersFromDB}}
+  <div class="profile-sidebar-all-users">
+    <div class="profile-userpic">
+      <img id="userpic" src="{{this.avatar}}" alt="userpic" class="img-responsive">
+    </div>
+    <div class="profile-usertitle">
+      <div class="profile-usertitle-name">
+        <p>{{this.username}}</p>
+        <a class="btn btn-secondary btn-sm" href="/users/profile/{{this._id}}">Visit profile</a>
+      </div>
+    </div>
+  </div>
+  {{/each}}
+</div>
