@@ -18,12 +18,9 @@ window.onload = () => {
     const boardId = document.getElementById("boardId").value;
     document.getElementById('board-details').innerHTML = `
     <h1>${boardTitle}</h1>
-    <button id="update-board-button">Update Board</button>
     <form class="auth-form" action="/memes/add-meme" method="POST" id="form-container" enctype="multipart/form-data">
       <input type="hidden" id="hidden" value=${boardId} name="boardId">
-      <br>
       <input id="newMeme" type="file" name="memeUrl">
-      <br>
       <button class="btn-primary" type="submit">Create new meme</button>
     </form>`;
   }
