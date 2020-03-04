@@ -18,33 +18,22 @@
   <link href="/stylesheets/userprofile.css" rel="stylesheet" id="bootstrap-css">
 </head>
 <body>
-    <nav class="navbar navbar-inverse">
-      <div class="container-fluid">
-          <div class="navbar-header">
-              <a class="navbar-brand" href="/"><b>U-meme</b></a>
-          </div>
-          {{#if currentUser}}
-          <form class="auth-form" action="/users/search" method="GET" id="form-container">
-          <div class="card-body row no-gutters align-items-center">
-            <div class="col">
-              <input class="form-control form-control-lg form-control-borderless" name="username" type="text" placeholder="Search for users" />
-            </div>
-            <div class="col-auto">
-              <button class="btn btn-primary btn-lg" type="submit">Search</button>
-            </div>
-          </div>
-        </form>
-          <ul class="nav navbar-nav"></ul>
-          <a class="active" href="/users/profile">Profile</a>
-          <span>Hi, {{ currentUser.username }}</span>
-          <a class="active" href="/users/profile"><img src={{currentUser.avatar}} alt="avatar" width="100px"
-                  height="100px"></a>
-          <a href="/auth/logout">Logout</a>
-          {{else}}
-          <a href="auth/login">Login</a>
-          <a href="auth/signup">Signup</a>
-          </ul>
-      </div>
+  <nav class="navbar navbar-dark bg-dark fixed-top">
+    {{#if currentUser}}
+    <a class="navbar-brand"><img id="brand-logo" src="/images/imageedit_1_2937631585.png" alt="user-logo"></a>
+    <form action="/users/search" method="GET" class="form-inline">
+      <input id="search-input" class="form-control mr-sm-2" name="username" type="text" placeholder="Search for users" aria-label="Search">
+      <button class="btn my-2 my-sm-0 btn-primary" type="submit">Search</button>  
+    </form>
+    <div id="nav-bar-logged">
+      <span id="nav-bar-text">Hi, {{ currentUser.username }}</span>
+      <a class="active" href="/users/profile"><img class="profile-userpic-nav" src={{currentUser.avatar}} alt="avatar"></a>
+      <a class="active" href="/users/profile">Profile</a>
+      <a href="/auth/logout">Logout</a>
+    </div>
+    {{else}}
+    <a href="auth/login">Login</a>
+    <a href="auth/signup">Signup</a>
     {{/if}}
   </nav>
   {{{body}}}
