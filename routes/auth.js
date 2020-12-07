@@ -64,7 +64,6 @@ router.post("/signup", uploadCloud.single("avatar"), (req, res, next) => {
     newUser
       .save()
       .then(newlyCreatedUser => {
-        console.log(newlyCreatedUser);
         req.session.user = newlyCreatedUser;
         res.redirect("/");
       })
